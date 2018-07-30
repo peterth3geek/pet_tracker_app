@@ -14,6 +14,17 @@ class PlaysController < ApplicationController
 
   end
 
+  def edit
+    @play = Play.find(params[:id])
+  end
+
+  def update
+    @play = Play.find(params[:id])
+    @play.update(play_params)
+
+    redirect_to @play
+  end
+
   private
   def play_params
     params.require(:play).permit(:pet_id, :owner_id, :notes, :time)

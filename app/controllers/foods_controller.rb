@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
 
   def show
     # binding.pry
-    @food = Food.find(params[:id])
+    get_food
   end
 
   def create
@@ -14,9 +14,23 @@ class FoodsController < ApplicationController
 
   end
 
+  def edit
+    get_food
+  end
+
+  def update
+    get_food
+    @food.update(food_params)
+    redirect_to @food
+  end
+
   private
   def food_params
     params.require(:food).permit(:pet_id, :owner_id, :notes, :time)
+  end
+
+  def get_food
+    @food = Food.find(params[:id])
   end
 
 end

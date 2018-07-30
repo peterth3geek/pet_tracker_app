@@ -1,0 +1,7 @@
+
+<h2>Meal - <%= @waste.logged_time %> with <%= @waste.owner.name %></h2>
+<%= form_for @waste do |f| %>
+<%= f.label :notes %>
+<%= f.text_area :notes, value: "#{@waste.notes}" %><br>
+<%= f.submit %>
+<% end %>
