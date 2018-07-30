@@ -6,4 +6,6 @@ class Owner < ApplicationRecord
   has_many :wastes
   has_many :foods
   has_many :plays
+
+  has_secure_password
 end

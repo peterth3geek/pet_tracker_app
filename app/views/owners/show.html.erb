@@ -1,0 +1,9 @@
+<h1><%= @owner.name %></h1>
+<p><img src"<%= @owner.img_url %>" alt="profile picture"></p>
+<p><%= @owner.bio %></p>
+<h2>My Pets!</h2>
+<ul>
+  <% @owner.pets.each do |pet| %>
+    <li><%= link_to pet.name, pet %></li>
+  <% end %>
+</ul>
