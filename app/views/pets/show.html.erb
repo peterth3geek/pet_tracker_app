@@ -6,7 +6,7 @@
   <li>Last fed: <%= link_to @pet.foods.last, food_path(@pet.foods.last) %>
     <%= form_tag('/foods', method :new) do %>
     <%= hidden_field_tag 'pet_id' value: "#{@pet.id}"%>
-    <%= hidden_field_tag 'owner_id' value: "#{@pet.owners[0]}"%>
+    <%= hidden_field_tag 'owner_id' value: "#{session[:owner_id]}"%>
     <%= submit_tag 'Mark Feed!' %>
     <% end %>
   </li>
