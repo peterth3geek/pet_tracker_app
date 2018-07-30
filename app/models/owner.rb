@@ -13,9 +13,6 @@ class Owner < ApplicationRecord
 
   validates :name, uniqueness: true
 
-
-  def default_stats
-    # {bio: default, gender: default}
-  end
+has_one_attached :avatar
 
 end
