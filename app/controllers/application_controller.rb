@@ -2,7 +2,15 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def current_user
-    session[:owner_id]
+    if session[:owner_id]
+      @owner = Owner.find(session[:owner_id])
+    else
+    end
+  end
+
+  # For future use MVP: see my pets only
+  def authorized
+    redirect_to login_path unless logged_in?
   end
 
   def logged_in?
