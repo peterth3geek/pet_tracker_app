@@ -14,6 +14,10 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def show
+    @appointment = find_appointment
+  end
+
   private
 
   def find_appointment
