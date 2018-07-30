@@ -23,9 +23,26 @@ class OwnersController < ApplicationController
     @owner = find_owner
   end
 
+  def edit
+    @owner = find_owner
+  end
+
+  def update
+    @owner = find_owner
+    if @owner.update(update_params)
+      redirect_to @owner
+    else
+      render :edit
+    end
+  end
+
   private
   def find_owner
     Owner.find(params[:id])
+  end
+
+  def update_params
+    params.require(:owner).permit(:name, :bio, :gender, :img_url, :password, :password_confirmation)
   end
 
   def owner_params(*args)

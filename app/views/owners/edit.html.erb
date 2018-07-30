@@ -1,0 +1,24 @@
+<h1>Edit Your Profile</h1>
+<ul>
+  <% @owner.errors.full_messages.each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <%= form_for @owner do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br/>
+    <%= f.label :gender %>
+    <%= f.text_field :gender %><br/>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %><br/>
+    <%= f.label :img_url %>
+    <%= f.text_field :img_url %><br/>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br/>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %><br/>
+    <%= f.submit %>
+  <% end %>
+</ul>
