@@ -10,5 +10,6 @@ class SessionsController < ApplicationController
       redirect_to owner_path
     else
       redirect_to login_path
+    end
   end
 end

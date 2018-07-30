@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :relationships
   resources :families
   resources :wastes
-  resources :foods
+  resources :foods, only: [:show, :new, :create]
   resources :plays
   resources :conditions
   resources :appointments

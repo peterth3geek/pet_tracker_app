@@ -2,6 +2,9 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @food = Food.new
+    @waste = Waste.new
+    @play = Play.new
   end
 
   def new
