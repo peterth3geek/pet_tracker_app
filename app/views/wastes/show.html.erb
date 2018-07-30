@@ -1,0 +1,2 @@
+<h2><%= link_to @waste.owner.name, owner_path(@waste.owner) %> fed <%= link_to @waste.pet.name, pet_path(@waste.pet) %> at <%= @waste.logged_time %></h2>
+<p><%= @waste.notes %></p>

@@ -1,3 +1,2 @@
-<h2><%= @play.title %></h2>
-<p><%= @play.created_at %></p>
+<h2><%= link_to @play.owner.name, owner_path(@play.owner) %> played with <%= link_to @play.pet.name, pet_path(@play.pet) %> at <%= @play.logged_time %></h2>
 <p><%= @play.notes %></p>

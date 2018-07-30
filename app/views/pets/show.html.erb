@@ -1,17 +1,17 @@
 <h2><%= @pet.name %></h2>
-<p><%= @pet.age %> year old <%= @pet.breed %></p>
+<p><%= @pet.age %> year-old <%= @pet.breed %> <%= @pet.species %></p>
 
 <ul>
-  <li>Weight: <%= @pet.weight %></li>
-  <li>Last fed:
+  <li>Weight: <%= @pet.weight %>lbs</li>
+  <li>Last fed at:
 <% if @pet.foods.empty? || @pet.foods.last.time == nil%>
 Log feeding times here!
 <% else %>
 
-  <%=link_to @pet.foods.last.time, food_path(@pet.foods.last)%>
+  <%=link_to @pet.foods.last.logged_time, food_path(@pet.foods.last)%>
   <% end %>
     <%= form_for @food do |f| %>
-    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year %>
+    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
     <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
     <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
     <%= f.submit "Feed!" %>
@@ -24,10 +24,52 @@ Log feeding times here!
   <%=link_to @pet.plays.last.logged_time, play_path(@pet.plays.last)%>
   <% end %>
   <%= form_for @play do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year 
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
   <%= f.submit "Play!" %>
   <% end %>
 </li>
+<li>
+<% if @pet.species.downcase == "dog" %>
+  Last Walk:
+  <% if @pet.wastes.empty? %>
+  Log walks here!
+  <% else %>
+<%=link_to @pet.wastes.last.logged_time, waste_path(@pet.wastes.last)%>
+<% end %>
+<%= form_for @waste do |f| %>
+<%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+<%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
+<%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
+<%= f.submit "Walk!" %>
+<% end %>
+<% elsif @pet.species.downcase == "cat" %>
+Last Scoop:
+<% if @pet.wastes.empty? %>
+Log scoops here!
+<% else %>
+<%=link_to @pet.wastes.last.logged_time, waste_path(@pet.wastes.last)%>
+<% end %>
+<%= form_for @waste do |f| %>
+<%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+<%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
+<%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
+<%= f.submit "Scoop!" %>
+<% end %>
+<% else %>
+Last Cage Cleaning:
+<% if @pet.wastes.empty? %>
+Log Cleanings here!
+<% else %>
+<%=link_to @pet.wastes.last.logged_time, waste_path(@pet.wastes.last)%>
+<% end %>
+<%= form_for @waste do |f| %>
+<%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+<%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
+<%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
+<%= f.submit "Cleaning!" %>
+<% end %>
+<% end %>
+
 </ul>
