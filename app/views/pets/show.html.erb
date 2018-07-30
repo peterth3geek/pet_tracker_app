@@ -3,6 +3,12 @@
 
 <ul>
   <li>Weight: <%= @pet.weight %></li>
-  <li>Last fed: <%= link_to @pet.foods.last, food_path(@pet.foods.last) %></li>
+  <li>Last fed: <%= link_to @pet.foods.last, food_path(@pet.foods.last) %>
+    <%= form_tag('/foods', method :new) do %>
+    <%= hidden_field_tag 'pet_id' value: "#{@pet.id}"%>
+    <%= hidden_field_tag 'owner_id' value: "#{@pet.owners[0]}"%>
+    <%= submit_tag 'Mark Feed!' %>
+    <% end %>
+  </li>
   <li>Last played with: <%= link_to @pet.plays.last, play_path(@pet.plays.last) %></li>
 </ul>
