@@ -1,0 +1,12 @@
+<h1>Create New Appointment</h1>
+<%= form_for @appointment do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br/>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %><br/>
+  <%= f.label :date %>
+  <%= f.datetime_select :start_datetime, :ampm => true, :minute_step => 15 %><br/>
+  <%= f.collection_select :pet_id, Pet.all, :id, :name %>
+  <%= f.collection_select :owner_id, Owner.all, :id, :name %><br/>
+  <%= f.submit %>
+<% end %>
