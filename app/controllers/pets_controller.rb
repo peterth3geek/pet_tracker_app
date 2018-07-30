@@ -9,8 +9,8 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.create(pet_params)
-
+    @pet = Pet.new(pet_params)
+    binding.pry
     if @pet.save
       redirect_to @pet
     else
