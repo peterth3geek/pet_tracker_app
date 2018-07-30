@@ -8,11 +8,9 @@ Rails.application.routes.draw do
   resources :plays
   resources :conditions
   resources :appointments
-  get '/signup', to: 'owners#new'
-  post '/signup', to: 'owners#create'
-  get '/owner', to: 'owners#show'
-  post 'session', to: 'owners#destroy', as: 'logout'
-  get '/login', to: 'sessions#new', as: 'login'
-  get '/login', to: 'sessions#create'
+  get 'signup', to: 'owners#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  post 'sessions', to: 'sessions#create', as: 'sessions'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

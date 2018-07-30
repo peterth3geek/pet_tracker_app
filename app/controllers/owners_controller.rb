@@ -13,7 +13,7 @@ class OwnersController < ApplicationController
     @owner = Owner.create(owner_params)
     if @owner.save
       session[:owner_id] = @owner.id
-      redirect_to owner_path
+      redirect_to @owner
     else
       render :new
     end
@@ -21,10 +21,6 @@ class OwnersController < ApplicationController
 
   def show
     @owner = find_owner
-  end
-
-  def destroy
-    session.delete :user_id
   end
 
   private
