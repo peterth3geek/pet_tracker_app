@@ -1,0 +1,15 @@
+<%= form_for @pet do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<%= f.label :species %>
+<%= f.text_field :species %><br>
+<%= f.label :breed %>
+<%= f.text_field :breed %><br>
+<%= f.label :age %>
+<%= f.text_field :age %><br>
+<%= f.label :weight %>
+<%= f.text_field :weight %><br>
+<%= f.label :img_url %>
+<%= f.text_field :img_url %><br>
+<%= f.submit %>
+<% end %>

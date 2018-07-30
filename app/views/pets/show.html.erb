@@ -3,5 +3,6 @@
 
 <ul>
   <li>Weight: <%= @pet.weight %></li>
-  <li>Last fed: <%= @pet.foods.last %></li>
+  <li>Last fed: <%= link_to @pet.foods.last, food_path(@pet.foods.last) %></li>
+  <li>Last played with: <%= link_to @pet.plays.last, play_path(@pet.plays.last) %></li>
 </ul>
