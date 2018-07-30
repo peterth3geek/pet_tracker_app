@@ -1,7 +1,7 @@
 class WastesController < ApplicationController
   def show
     # binding.pry
-    @waste = Waste.find(params[:id])
+    get_waste
   end
 
   def create
@@ -13,8 +13,23 @@ class WastesController < ApplicationController
 
   end
 
+  def edit
+    get_waste
+  end
+
+  def update
+    get_waste
+    @waste.update(waste_params)
+    redirect_to @waste
+  end
+
+
   private
   def waste_params
     params.require(:waste).permit(:pet_id, :owner_id, :notes, :time)
+  end
+
+  def get_waste
+    @waste = Waste.find(params[:id])
   end
 end

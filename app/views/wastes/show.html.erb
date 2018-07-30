@@ -1,2 +1,3 @@
-<h2><%= link_to @waste.owner.name, owner_path(@waste.owner) %> fed <%= link_to @waste.pet.name, pet_path(@waste.pet) %> at <%= @waste.logged_time %></h2>
+<h2><%= link_to @waste.owner.name, owner_path(@waste.owner) %> documtend waste cleaning for <%= link_to @waste.pet.name, pet_path(@waste.pet) %> at <%= @waste.logged_time %></h2>
+<p><%= link_to "Edit Notes", edit_waste_path %></p>
 <p><%= @waste.notes %></p>
