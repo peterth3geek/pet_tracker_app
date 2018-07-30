@@ -4,12 +4,14 @@
 <ul>
   <li>Weight: <%= @pet.weight %></li>
   <li>Last fed:
-<% if @pet.foods.empty? %>
+<% if @pet.foods.empty? || @pet.foods.last.time == nil%>
 Log feeding times here!
 <% else %>
-  <%=link_to @pet.foods.last, food_path(@pet.foods.last)%>
+
+  <%=link_to @pet.foods.last.time, food_path(@pet.foods.last)%>
   <% end %>
     <%= form_for @food do |f| %>
+    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year %>
     <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
     <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
     <%= f.submit "Feed!" %>
@@ -19,9 +21,10 @@ Log feeding times here!
     <% if @pet.plays.empty? %>
     Log  playtimes here!
     <% else %>
-  <%=link_to @pet.plays.last, play_path(@pet.plays.last)%>
+  <%=link_to @pet.plays.last.logged_time, play_path(@pet.plays.last)%>
   <% end %>
   <%= form_for @play do |f| %>
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year 
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
   <%= f.submit "Play!" %>

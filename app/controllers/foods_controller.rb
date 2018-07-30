@@ -1,12 +1,12 @@
 class FoodsController < ApplicationController
 
   def show
-    binding.pry
+    # binding.pry
     @food = Food.find(params[:id])
   end
 
   def create
-    binding.pry
+    # binding.pry
     @food = Food.new(food_params)
     if @food.save
       redirect_to @food

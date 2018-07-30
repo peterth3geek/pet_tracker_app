@@ -49,6 +49,8 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.time_zone = 'Eastern Time (US & Canada)'
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 

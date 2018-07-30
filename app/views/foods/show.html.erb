@@ -1,2 +1,2 @@
-<h2><%= @food.owner.name %> fed <%= @food.pet.name %> at <%= @food.created_at %></h2>
+<h2><%= link_to @food.owner.name, owner_path(@food.owner) %> fed <%= link_to @food.pet.name, pet_path(@food.pet) %> at <%= @food.time %></h2>
 <p><%= @food.notes %></p>

@@ -11,13 +11,10 @@ class SessionsController < ApplicationController
     else
       redirect_to login_path
     end
-<<<<<<< HEAD
-=======
   end
 
   def destroy
     session.delete :owner_id
     redirect_to login_path
->>>>>>> andre-owners
   end
 end
