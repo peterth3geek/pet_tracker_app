@@ -5,6 +5,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    binding.pry
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
       redirect_to @appointment

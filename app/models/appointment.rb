@@ -1,4 +1,4 @@
 class Appointment < ApplicationRecord
   belongs_to :owner
-  has_one :pet, through: :condition
+  belongs_to :pet
 end
