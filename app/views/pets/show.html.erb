@@ -4,6 +4,14 @@
 <% @pet.relationships.each do |relationship| %>
 <p><%= link_to relationship.owner.name, relationship.owner %> - <%= relationship.title %></p>
 <% end %>
+<% if @pet.appointments.empty? %>
+<% elsif @pet.appointments.last.logged_time < Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
+<% else %>
+<h3>Upcoming Appointments:</h3>
+<%= @pet.appointments.last.logged_time %>
+<% end %>
+
+
 <h3>Pet's Conditions: <%= link_to "Add a new condition", new_condition_path %></h3>
   <% @pet.conditions.each do |condition| %>
   <p><%= link_to condition.title, condition %> - <%= condition.notes %></p>
@@ -85,3 +93,4 @@ Log Cleanings here!
 <%= button_to "Edit Profile", edit_pet_path, method: :get %>
 <%= button_to "Create New Relationship", new_relationship_path, method: :get %>
 <%= button_to "Edit Relationship", edit_relationship_path, method: :get %>
+<%= button_to "Add an Appointment", new_appointment_path, method: :get %>
