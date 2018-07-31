@@ -1,5 +1,9 @@
 class PetsController < ApplicationController
 
+  def index
+    @pet = Pet.all
+  end
+
   def show
     @pet = Pet.find(params[:id])
     @food = Food.new

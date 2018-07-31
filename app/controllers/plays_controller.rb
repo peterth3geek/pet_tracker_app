@@ -1,5 +1,9 @@
 class PlaysController < ApplicationController
 
+  def index
+    @plays = Play.all
+  end
+
   def show
     # binding.pry
     @play = Play.find(params[:id])
