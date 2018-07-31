@@ -31,7 +31,7 @@ class RelationshipsController < ApplicationController
   def update
     @relationship = Relationship.find(params[:id])
     if @relationship.update(relationship_params)
-      binding.pry
+      # binding.pry
       redirect_to pet_path(@relationship.pet_id)
     else
       render :edit
