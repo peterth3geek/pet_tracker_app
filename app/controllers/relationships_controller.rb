@@ -24,7 +24,7 @@ class RelationshipsController < ApplicationController
 
 
   def edit
-    @relationship = Relationship.find(params[:id])
+    @relationship = Relationship.find_by(pet_id: params[:id])
     @pet = Pet.find(params[:id])
   end
 
