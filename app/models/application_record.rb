@@ -15,19 +15,20 @@ class ApplicationRecord < ActiveRecord::Base
     if input.empty?
       activity_array << "No Activity Yet!"
     elsif input[0] == "No Activity Yet!"
-      activity_array = activity_array
+      activity_array
     else
       activity_array = input.sort_by do |t|
           t.time
       end
+    end
+    # binding.pry
       activity_array.last
       end
-  end
 
   def recent_activity(input)
     # binding.pry
     if input == "No Activity Yet!"
-      input.first
+      input
     elsif input.class == Play
       "was played with"
     elsif input.class == Food
@@ -44,10 +45,10 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def display_most_recent
-    if self.living_method == ["No Activity Yet!"]
+    if self.living_method == ["No Activity Yet!"] || self.living_method == nil
       ["No Activity Yet!"]
     else
-      self.living_method.logged_time
+      self.living_method
     end
   end
 

@@ -24,7 +24,15 @@ class Pet < ApplicationRecord
     act << max_foods
     act << max_appts
     act << max_wastes
-    create_last_activity(act)
+    act.delete_if {|x| x == nil}
+    if act.empty?
+      x << "No Activity Yet!"
+    else
+    x = act.sort_by do |t|
+      t.time
+      end
+    end
+    x.last
   end
 
   def max_plays

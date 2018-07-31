@@ -5,9 +5,9 @@
 
 <h3>Live Feed:</h3>
 <% if @owner.display_most_recent == ["No Activity Yet!"] %>
-<%= @owner.display_most_recent[0] %>
+"No Activity Yet!"
 <% else %>
-<%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.display_most_recent %>
+<%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %>
 <% end %>
 
 <br>
@@ -26,7 +26,7 @@
 <h2>My Pets!</h2>
 <ul>
   <% @owner.pets.each do |pet| %>
-    <li><%= link_to pet.name, pet %> <%= pet.recent_activity(pet.most_recent)%> at <%= pet.most_recent.logged_time %></li>
+    <li><%= link_to pet.name, pet %> <%= pet.recent_activity(pet.most_recent)%> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></li>
   <% end %>
 </ul>
 <% end %>
