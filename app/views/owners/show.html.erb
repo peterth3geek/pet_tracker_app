@@ -1,10 +1,14 @@
-<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_pet_path %>
+<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
 <h1><%= @owner.name %></h1>
 <p><img src"<%= @owner.img_url %>" alt="profile picture"></p>
 <p><%= @owner.bio %></p>
+
+<h3>Live Feed:</h3>
+<%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %>
+
 <h2>My Pets!</h2>
 <ul>
   <% @owner.pets.each do |pet| %>
-    <li><%= link_to pet.name, pet %> <%= pet.recent_activity%> at <%= pet.most_recent.logged_time %></li>
+    <li><%= link_to pet.name, pet %> <%= pet.recent_activity(pet.most_recent)%> at <%= pet.most_recent.logged_time %></li>
   <% end %>
 </ul>

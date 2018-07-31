@@ -15,4 +15,8 @@ class Owner < ApplicationRecord
 
 has_one_attached :avatar
 
+def live_feed
+  self.pets.map {|pet| pet.most_recent}
+end
+
 end

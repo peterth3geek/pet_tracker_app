@@ -17,28 +17,6 @@ class Pet < ApplicationRecord
     end
   end
 
-  def self.live_feed
-    arr = self.all.select do |pet|
-      pet.most_recent
-    end
-    arr
-  end
-
-  def recent_activity
-    # binding.pry
-    if most_recent == "No activity yet!"
-      most_recent.first
-    elsif most_recent.class == Play
-      "was played with"
-    elsif most_recent.class == Food
-      "was fed"
-    elsif most_recent.class == Appointment
-      "had an appointment"
-    else
-      "had waste taken care of"
-    end
-  end
-
   def most_recent
     x = []
     act = []
@@ -46,17 +24,7 @@ class Pet < ApplicationRecord
     act << max_foods
     act << max_appts
     act << max_wastes
-    # binding.pry
-    act.delete_if {|x| x == nil}
-    if act.empty?
-      x << "No Activity Yet!"
-    else
-    x = act.sort_by do |t|
-        t.time
-    end
-    # binding.pry
-    x.last
-    end
+    create_last_activity(act)
   end
 
   def max_plays
