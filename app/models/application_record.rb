@@ -36,8 +36,14 @@ class ApplicationRecord < ActiveRecord::Base
       "was fed"
     elsif input.class == Appointment
       "had an appointment"
+    elsif input.pet.species.downcase == "dog"
+      "was walked"
+    elsif input.pet.species.downcase == "cat"
+      "had litter box scooped"
+    elsif input.pet.species.downcase == "fish"
+      "had tank cleaned"
     else
-      "had waste taken care of"
+      "had cage cleaned"
     end
   end
 
