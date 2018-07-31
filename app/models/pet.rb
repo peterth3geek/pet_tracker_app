@@ -8,6 +8,8 @@ class Pet < ApplicationRecord
   has_many :conditions
   has_many :appointments
 
+  has_one_attached :image
+
   accepts_nested_attributes_for :owners
 
   def owners_attributes=(owner_attributes)

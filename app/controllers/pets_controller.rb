@@ -18,8 +18,9 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     if @pet.save
-      binding.pry
+      @pet.image.attach(pet_params[:image])
       Relationship.create(pet_id: @pet.id, owner_id: pet_rel_params[:owner_id], title: "Owner" )
+
       redirect_to @pet
     else
       render :new
@@ -43,7 +44,7 @@ class PetsController < ApplicationController
 
   private
   def pet_params
-    params.require(:pet).permit(:name, :weight, :age, :img_url, :species, :breed)
+    params.require(:pet).permit(:name, :weight, :age, :image, :species, :breed)
   end
 
   def pet_rel_params

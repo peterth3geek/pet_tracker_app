@@ -9,8 +9,8 @@
 <%= f.text_field :age %><br>
 <%= f.label :weight %>
 <%= f.text_field :weight %><br>
-<%= f.label :img_url %>
-<%= f.text_field :img_url %><br>
+<%= f.label :image %>
+<%= f.file_field :image %><br>
 <%= f.fields_for :relationship do |rel_form| %>
 <%= rel_form.hidden_field :owner_id, value: session[:owner_id] %>
 <% end %>
