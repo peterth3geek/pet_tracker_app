@@ -6,7 +6,7 @@ class Pet < ApplicationRecord
   has_many :foods
   has_many :plays
   has_many :conditions
-  has_many :appointments, through: :conditions
+  has_many :appointments
 
 
 end

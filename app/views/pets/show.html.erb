@@ -4,7 +4,7 @@
 <% @pet.relationships.each do |relationship| %>
 <p><%= link_to relationship.owner.name, relationship.owner %> - <%= relationship.title %></p>
 <% end %>
-<h3>Pet's Conditions:</h3>
+<h3>Pet's Conditions: <%= link_to "Add a new condition", new_condition_path %></h3>
   <% @pet.conditions.each do |condition| %>
   <p><%= link_to condition.title, condition %> - <%= condition.notes %></p>
   ***<br>
