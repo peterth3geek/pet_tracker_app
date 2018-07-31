@@ -8,7 +8,7 @@ class RelationshipsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     @relationship = Relationship.new(relationship_params)
     if @relationship.valid?
       @relationship.save
