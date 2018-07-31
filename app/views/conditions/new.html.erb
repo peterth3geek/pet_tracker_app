@@ -1,0 +1,11 @@
+<h2>Add a Condition</h2>
+
+<%= form_for @condition do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.label :notes %>
+<%= f.text_area :notes %>
+<%= f.label :pet_id %>
+<%= f.collection_select :pet_id, Relationship.mypets, :id, :name %>
+<%= f.submit %>
+<% end %>

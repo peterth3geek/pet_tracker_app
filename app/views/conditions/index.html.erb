@@ -1,0 +1,6 @@
+<h2>Pets' Conditions</h2>
+<ul>
+  <% @conditions.each.do |condition| %>
+  <li><%= link_to condition.title, condition %> - <%= condition.notes %></li>
+  <% end %>
+</ul>
