@@ -1,0 +1,8 @@
+<h1>Edit Relationship</h1>
+<%= form_for @relationship do |f| %>
+  <%= f.label :owner_id, "Select User to Edit: " %>
+  <%= f.collection_select :owner_id, user_pet_relations, :id, :name %><br/>
+  <%= f.label :title, "Change User's Title: " %>
+  <%= f.text_field :title %><br/>
+  <%= f.submit %>
+<% end %>
