@@ -29,11 +29,10 @@ class RelationshipsController < ApplicationController
   end
 
   def update
-
-    @pet = Pet.find(params[:id])
     @relationship = Relationship.find(params[:id])
     if @relationship.update(relationship_params)
-      redirect_to @pet
+      binding.pry
+      redirect_to pet_path(@relationship.pet_id)
     else
       render :edit
     end
