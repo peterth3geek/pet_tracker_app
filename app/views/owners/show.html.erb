@@ -4,7 +4,7 @@
 <p><%= @owner.bio %></p>
 
 <h3>Live Feed:</h3>
-<% if @owner.display_most_recent == ["No Activity Yet!"] %>
+<% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
 "No Activity Yet!"
 <% else %>
 <%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %>
