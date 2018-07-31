@@ -1,0 +1,10 @@
+<h1>Add a New Relationship</h1>
+<%= form_for @relationship do |f| %>
+  <label>Select an Owner/Walker: </label>
+  <%= f.collection_select :owner_id, Owner.all, :id, :name %><br/>
+  <label>Add For: </label>
+  <%= f.collection_select :pet_id, current_user.pets, :id, :name %><br/>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "Walker" %><br/>
+  <%= f.submit %>
+<% end %>

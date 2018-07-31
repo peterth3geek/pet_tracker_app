@@ -1,6 +1,6 @@
 <ul>
   <% current_user.pets.each do |pet| %>
-    <li><%= pet.name %></li>
+    <li><%= link_to pet.name, pet %></li>
     Feed Activities:
     <ul><% if pet.foods.count > 0 %>
       <% pet.foods.each do |food| %>
