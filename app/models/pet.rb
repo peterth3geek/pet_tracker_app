@@ -8,9 +8,15 @@ class Pet < ApplicationRecord
   has_many :conditions
   has_many :appointments
 
+  def self.live_feed
+    arr = self.all.select do |pet|
+      pet.most_recent
+    end
+    arr
+  end
+
   def recent_activity
     # binding.pry
-
     if most_recent == "No activity yet!"
       most_recent.first
     elsif most_recent.class == Play
