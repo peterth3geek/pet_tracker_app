@@ -1,11 +1,13 @@
 <h2>Add a Condition</h2>
+<p><%= session[:owner_id] %></p>
+<%= current_user.pets %>
 
 <%= form_for @condition do |f| %>
 <%= f.label :title %>
-<%= f.text_field :title %>
-<%= f.label :notes %>
-<%= f.text_area :notes %>
+<%= f.text_field :title %><br>
+<%= f.label :notes %><br>
+<%= f.text_area :notes %><br>
 <%= f.label :pet_id %>
-<%= f.collection_select :pet_id, Relationship.mypets, :id, :name %>
+<%= f.collection_select :pet_id, current_user.pets, :id, :name %><br>
 <%= f.submit %>
 <% end %>
