@@ -11,5 +11,8 @@
 <%= f.text_field :weight %><br>
 <%= f.label :img_url %>
 <%= f.text_field :img_url %><br>
+<%= f.fields_for :relationship do |rel_form| %>
+<%= rel_form.hidden_field :owner_id, value: session[:owner_id] %>
+<% end %>
 <%= f.submit %>
 <% end %>
