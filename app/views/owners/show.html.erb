@@ -5,22 +5,28 @@
 
 <h3>Live Feed:</h3>
 <% if @owner.display_most_recent == ["No Activity Yet!"] %>
-<%= @owner.display_most_recent %>
+<%= @owner.display_most_recent[0] %>
 <% else %>
 <%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.display_most_recent %>
 <% end %>
 
-
+<br>
+<br>
 <% if @owner.appointments.empty? %>
 <%= link_to "Schedule Appointments", new_appointment_path %>
 <% else %>
 <h3>Upcoming Appointments:</h3>
 <p><%= @owner.appointments.last.logged_time %></p>
 <% end %>
-
+<br>
+<br>
+<% if @owner.pets.empty? %>
+<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %>
+<% else %>
 <h2>My Pets!</h2>
 <ul>
   <% @owner.pets.each do |pet| %>
     <li><%= link_to pet.name, pet %> <%= pet.recent_activity(pet.most_recent)%> at <%= pet.most_recent.logged_time %></li>
   <% end %>
 </ul>
+<% end %>

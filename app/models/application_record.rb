@@ -45,11 +45,10 @@ class ApplicationRecord < ActiveRecord::Base
 
   def display_most_recent
     if self.living_method == ["No Activity Yet!"]
-      "No Activity Yet!"
+      ["No Activity Yet!"]
     else
       self.living_method.logged_time
     end
-    ["No Activity Yet!"]
   end
 
 
