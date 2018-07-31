@@ -11,7 +11,7 @@
 
   <body>
     <nav>
-    Pet Tracker™
+    Pet Tracker™ -- <%= link_to "Home", current_user %>
       <% if logged_in? %>
         <%= button_to "Logout", logout_path, method: :delete %>
       <% else %>
