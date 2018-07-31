@@ -4,8 +4,8 @@
   <%= f.text_field :title %><br/>
   <%= f.label :notes %>
   <%= f.text_area :notes %><br/>
-  <%= f.label :date %>
-  <%= f.datetime_select :date, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %><br/>
+  <%= f.label :time %>
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %><br/>
   <%= f.collection_select :pet_id, Pet.all, :id, :name %>
   <%= f.collection_select :owner_id, Owner.all, :id, :name %><br/>
   <%= f.submit %>

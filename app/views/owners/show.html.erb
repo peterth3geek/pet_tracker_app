@@ -4,6 +4,6 @@
 <h2>My Pets!</h2>
 <ul>
   <% @owner.pets.each do |pet| %>
-    <li><%= link_to pet.name, pet %></li>
+    <li><%= link_to pet.name, pet %> <%= pet.recent_activity%> at <%= pet.most_recent.logged_time %></li>
   <% end %>
 </ul>

@@ -2,7 +2,11 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   def logged_time
-    self.time.strftime("%I:%M %p on %m/%d/%Y")
+    if self.time.strftime("%m/%d/%Y") == Time.now.strftime("%m/%d/%Y")
+      self.time.strftime("%I:%M %P today.")
+    else
+    self.time.strftime("%I:%M %P on %m/%d/%Y")
+  end
   end
 
   # def current_user
