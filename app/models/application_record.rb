@@ -14,6 +14,8 @@ class ApplicationRecord < ActiveRecord::Base
     input.delete_if {|x| x == nil}
     if input.empty?
       activity_array << "No Activity Yet!"
+    elsif input[0] == "No Activity Yet!"
+      activity_array = activity_array
     else
       activity_array = input.sort_by do |t|
           t.time
@@ -24,7 +26,7 @@ class ApplicationRecord < ActiveRecord::Base
 
   def recent_activity(input)
     # binding.pry
-    if input == "No activity yet!"
+    if input == "No Activity Yet!"
       input.first
     elsif input.class == Play
       "was played with"
@@ -39,6 +41,15 @@ class ApplicationRecord < ActiveRecord::Base
 
   def living_method
     self.create_last_activity(self.live_feed)
+  end
+
+  def display_most_recent
+    if self.living_method == ["No Activity Yet!"]
+      "No Activity Yet!"
+    else
+      self.living_method.logged_time
+    end
+    ["No Activity Yet!"]
   end
 
 

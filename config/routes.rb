@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :conditions
   resources :appointments
   get 'signup', to: 'owners#new', as: 'signup'
+  post 'signup', to: 'owners#create', as: 'signups'
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   post 'sessions', to: 'sessions#create', as: 'sessions'
