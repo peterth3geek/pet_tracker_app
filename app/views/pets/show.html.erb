@@ -1,11 +1,21 @@
 <h2><%= @pet.name %></h2>
 <p><%= @pet.age %> year-old <%= @pet.breed %> <%= @pet.species %></p>
+<p>Weight: <%= @pet.weight %>lbs</p>
+<h3>Pet's Conditions:</h3>
+<ul>
+  <% @pet.conditions.each do |condition| %>
+  <li><%= condition.title %> - <%= condition.notes %></li>
+  <% end %>
+</ul>
+
+
+
 <% @pet.relationships.each do |relationship| %>
 <p><%= link_to relationship.owner.name, relationship.owner %> - <%= relationship.title %></p>
 <% end %>
 
 <ul>
-  <li>Weight: <%= @pet.weight %>lbs</li>
+
   <li>Last fed at:
 <% if @pet.foods.empty? || @pet.foods.last.time == nil%>
 Log feeding times here!
