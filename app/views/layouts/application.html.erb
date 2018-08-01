@@ -4,21 +4,22 @@
     <title>PetTrackerApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <nav>
-    Pet Tracker™ -- <%= link_to "Home", current_user %>
+  <body class='important'>
+    <nav class "navbar navbar-default navbar-fixed-top">
+      <div class="container">
+    <h3 class="banner">Pet Tracker™</h3> -- <%= link_to "Home", current_user %> --
       <% if logged_in? %>
         <%= button_to "Logout", logout_path, method: :delete %>
       <% else %>
         <div><%= button_to "Login", login_path, method: :get %> <%= button_to "Sign Up!", signup_path, method: :get %></div>
       <% end %>
+    </div>
     </nav>
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     <br>
     <%= yield %>
   </body>

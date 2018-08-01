@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+
+$pet-color: #00a3bb;
+$background-color: #c0c0c0;
+
+@mixin pet-class {
+  color: $pet-color;
+  font-weight: 200;
+}
+
+@mixin base() {
+  background-color: $background-color;
+  font-weight: 200;
+  color: #000;
+}
+
+@mixin central(){
+  text-align: center;
+}
+
+.banner {
+  @include base;
+  @include pet-class;
+  @include central;
+}
+
+.important {
+  @include base;
+}
+
+@media print{
+  p{
+    font-family: sans-serif, "Arial";
+    font-size: 15pt;
+    background-color: #808080;
+    color: #000;
+  }
+  h1{
+
+  }
+}
