@@ -32,13 +32,25 @@ $background-color: #c0c0c0;
 
 @mixin pet-class {
   color: $pet-color;
-  font-weight: 200;
 }
 
 @mixin base() {
   background-color: $background-color;
   font-weight: 200;
   color: #000;
+  text-align: left;
+}
+
+@mixin massive(){
+  font-size: 80px;
+}
+
+@mixin largy(){
+  font-size: 48px;
+}
+
+@mixin biggy(){
+  font-size: 24px;
 }
 
 @mixin central(){
@@ -49,20 +61,48 @@ $background-color: #c0c0c0;
   @include base;
   @include pet-class;
   @include central;
+  @include massive;
+}
+
+.big-header{
+  @include base;
+  @include pet-class;
+  @include central;
+  @include largy;
+}
+
+.staple {
+  @include base;
+  @include pet-class;
+  @include largy;
 }
 
 .important {
   @include base;
+  @include central
 }
 
-@media print{
-  p{
-    font-family: sans-serif, "Arial";
-    font-size: 15pt;
-    background-color: #808080;
-    color: #000;
-  }
-  h1{
+.normal {
+  @include base;
+}
 
+table{
+  @include biggy;
+  border-collapse: collapse;
+  th, td{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid white;
   }
+}
+
+table.cool{
+  tr:hover {background-color: $pet-color;}
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.center{
+  margin-left: auto;
+  margin-right: auto;
 }
