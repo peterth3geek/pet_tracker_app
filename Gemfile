@@ -8,7 +8,7 @@ gem 'bootstrap', '~> 4.1.3'
 
 gem 'bcrypt'
 gem 'jquery-rails'
-gem 'pry'
+gem 'pry-byebug'
 gem 'sprockets-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

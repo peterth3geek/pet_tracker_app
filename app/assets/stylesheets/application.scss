@@ -96,7 +96,6 @@ $background-color: #c0c0c0;
 }
 
 table{
-  @include biggy;
   border-collapse: collapse;
   width: 100%;
   th, td{
@@ -106,6 +105,7 @@ table{
 }
 
 table.cool{
+  @include biggy;
   tr:hover {background-color: $pet-color;}
   margin-left: auto;
   margin-right: auto;
@@ -124,7 +124,17 @@ table.feed{
 }
 }
 
+table.all-feed{
+  tr:hover {background-color: $pet-color;}
+  margin-left: auto;
+  margin-right: auto;
+  th, td, tr{
+  text-align: center;
+}
+}
+
 table.center{
+  @include biggy;
   margin-left: auto;
   margin-right: auto;
   th, td, tr{

@@ -22,6 +22,11 @@ def live_feed
 end
 
 def all_feed
+  self.pets.map {|pet| pet.my_log}.flatten
+end
+
+def sorted_all_feed
+  self.all_feed.flatten.sort_by {|thing| thing.time}.reverse
 end
 
 end

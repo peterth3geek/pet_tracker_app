@@ -65,3 +65,12 @@
 </table>
 <% end %>
 </div>
+<div class="column side">
+  <h3 class="mid-header"> All Activity</h3>
+  <table class="all-feed">
+  <% @owner.sorted_all_feed.each do |thing| %>
+  <tr><td><%= thing.pet.name %></td> <td><%=thing.class%></td><td><%= thing.logged_time %></td></tr>
+  <% end %>
+</table>
+
+</div>
