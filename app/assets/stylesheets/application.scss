@@ -11,13 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  */
+ @import "bootstrap";
+ 
 
-   .custom-file-control:before{
-     content: "Browse";
-   }
-   .custom-file-control:after{
-     content: "Add files..";
-   }
+
 
 
 
