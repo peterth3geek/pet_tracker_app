@@ -119,6 +119,17 @@
      border-bottom: 1px solid white;
    }
  }
+ table.cool-smol{
+   th:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+     border-bottom: 1px solid white;
+   }
+   th {
+     font-weight: 200;
+   }
+ }
 
  table.feed{
    @include biggy;
@@ -247,6 +258,21 @@
      @include button-variant($btn-success-bg, transparent, $btn-success-bg);
      &:hover {
        @include button-variant($btn-success-bg, darken($btn-success-bg, 25%), $btn-success-bg);
+     }
+   }
+ }
+
+ .btn-info {
+   &.btn-inverse {
+     @include button-variant($btn-info-bg, $btn-info-color, $btn-info-bg);
+     &:hover {
+       @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+     }
+   }
+   &.btn-transparent {
+     @include button-variant($btn-info-bg, transparent, $btn-info-bg);
+     &:hover {
+       @include button-variant($btn-info-bg, darken($btn-info-bg, 25%), $btn-info-bg);
      }
    }
  }
