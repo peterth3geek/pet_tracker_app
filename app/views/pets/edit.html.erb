@@ -1,15 +1,38 @@
+<div class="container">
+<div class="card">
+  <div class="card-header">
+  <h1>New Pet</h1>
+</div>
+<div class="card-body">
 <%= form_for @pet do |f| %>
+<div class="form-group">
 <%= f.label :name %>
-<%= f.text_field :name %><br>
+<%= f.text_field :name, class: "form-control" %>
+</div>
+<div class="form-group">
 <%= f.label :species %>
-<%= f.text_field :species %><br>
+<%= f.text_field :species, class: "form-control" %>
+</div><div class="form-group">
 <%= f.label :breed %>
-<%= f.text_field :breed %><br>
+<%= f.text_field :breed, class: "form-control"%>
+</div><div class="form-group">
 <%= f.label :age %>
-<%= f.text_field :age %><br>
+<%= f.text_field :age, class: "form-control" %>
+</div><div class="form-group">
 <%= f.label :weight %>
-<%= f.text_field :weight %><br>
-<%= f.label :image %>
-<%= f.file_field :image %><br>
-<%= f.submit %>
+<%= f.text_field :weight, class: "form-control" %>
+</div>
+
+<div class="custom-file">
+<%= f.file_field :image, class: "custom-file-input" %>
+<%= f.label :image, class: "custom-file-label" %>
+</div>
+
+<hr>
+<%= f.fields_for :relationship do |rel_form| %>
+<%= rel_form.hidden_field :owner_id, value: session[:owner_id] %>
 <% end %>
+<%= f.submit "Create Pet", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>

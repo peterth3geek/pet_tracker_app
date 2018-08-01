@@ -20,10 +20,15 @@
   //   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   // }
 
-  
 
 
 
+  .custom-file-control:before{
+    content: "Browse";
+  }
+  .custom-file-control:after{
+    content: "Add files..";
+  }
 
 
 
@@ -105,4 +110,14 @@ table.cool{
 table.center{
   margin-left: auto;
   margin-right: auto;
+}
+
+.welcome {
+  background-image: url("images/earl.jpg");
+}
+
+.card {
+  margin: auto;
+  width: 50%;
+  border: 1px sold black;
 }
