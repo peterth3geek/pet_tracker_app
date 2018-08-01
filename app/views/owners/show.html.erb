@@ -1,28 +1,28 @@
 
 <div class="column side">
 <table class="center">
-<tr>
+<tr><td>
 <h1 class="big-header"><%= @owner.name %></h1>
-</tr>
-<tr>
-<p><% if @owner.image.attachment %>
+</td></tr>
+<tr><td>
+<p class="important"><% if @owner.image.attachment %>
   <%= image_tag @owner.image, style: 'height:auto;width:300px;' %>
   <% else %>
   There's no image.
   <% end %>
 </p>
-</tr>
-<tr>
+</td></tr>
+<tr><td>
 <% if @owner.bio == nil %>
 <%= link_to '<button type="button">Update your Bio!</button>'.html_safe, edit_owner_path(@owner) %>
 
 <% else %>
 <p><%= @owner.bio %></p>
 <% end %>
-</tr>
+</td></tr>
 </table>
-<%= link_to '<button type="button">Edit Profile!</button>'.html_safe, edit_owner_path %><br>
-<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
+
+<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Edit Profile!</button>'.html_safe, edit_owner_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
 </div>
 
 <div class="column middle">
