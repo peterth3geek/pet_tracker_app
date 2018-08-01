@@ -32,7 +32,7 @@
 <%= f.fields_for :relationship do |rel_form| %>
 <%= rel_form.hidden_field :owner_id, value: session[:owner_id] %>
 <% end %>
-<%= f.submit "Create Pet", class: "btn btn-primary" %>
+<%= f.submit "Update Pet", class: "btn btn-primary" %>
 <% end %>
 </div>
 </div>

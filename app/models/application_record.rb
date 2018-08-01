@@ -11,18 +11,16 @@ class ApplicationRecord < ActiveRecord::Base
 
   def create_last_activity(input)
     activity_array = []
-    input.delete_if {|x| x == nil}
+    input.delete_if {|x| x == nil || x == "No Activity Yet!"}
     if input.empty?
       activity_array << "No Activity Yet!"
-    elsif input[0] == "No Activity Yet!"
-      activity_array
+    # elsif input[0] == "No Activity Yet!" || input == "No Activity Yet!"
+    #   activity_arrays
     else
       activity_array = input.sort_by do |t|
           t.time
-          # binding.pry
       end
     end
-    # binding.pry
       activity_array.last
       end
 
