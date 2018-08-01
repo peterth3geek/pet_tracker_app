@@ -1,5 +1,7 @@
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
-<h1><%= @owner.name %></h1>
+
+<h1 class="banner"><%= @owner.name %></h1>
+
 
 <p><% if @owner.image.attachment %>
   <%= image_tag @owner.image %>
@@ -7,13 +9,13 @@
   There's no image.
   <% end %>
 </p>
+
 <p><%= @owner.bio %></p>
 
-<h3>Live Feed:</h3>
 <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
-"No Activity Yet!"
+<p class="important">"No Activity Yet!"</p>
 <% else %>
-<%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %>
+<p class="important"><%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></p>
 <% end %>
 
 <br>

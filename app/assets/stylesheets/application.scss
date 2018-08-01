@@ -10,85 +10,59 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+
  */
-@import "bootstrap";
+ @import "bootstrap-sprockets";
+  @import "bootstrap";
 
-  body {
-    background-color: #fafafa;
-    font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  // body {
+  //   background-color: #fafafa;
+  //   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  // }
+
+  
+
+
+
+
+
+
+$pet-color: #00a3bb;
+$background-color: #c0c0c0;
+
+@mixin pet-class {
+  color: $pet-color;
+  font-weight: 200;
+}
+
+@mixin base() {
+  background-color: $background-color;
+  font-weight: 200;
+  color: #000;
+}
+
+@mixin central(){
+  text-align: center;
+}
+
+.banner {
+  @include base;
+  @include pet-class;
+  @include central;
+}
+
+.important {
+  @include base;
+}
+
+@media print{
+  p{
+    font-family: sans-serif, "Arial";
+    font-size: 15pt;
+    background-color: #808080;
+    color: #000;
   }
-
-  .navbar-brand {
-    a {
-      color: #125688;
-    }
-  }
-
-  .navbar-default {
-    background-color: #fff;
-    height: 54px;
-    .navbar-nav li a {
-      color: #125688;
-    }
-  }
-
-  .navbar-container {
-    width: 640px;
-    margin: 0 auto;
-  }
-
-  .posts-wrapper {
-    padding-top: 40px;
-    margin: 0 auto;
-    max-width: 642px;
-    width: 100%;
-  }
-
-  .post {
-    background-color: #fff;
-    border-color: #edeeee;
-    border-style: solid;
-    border-radius: 3px;
-    border-width: 1px;
-    margin-bottom: 60px;
-  }
-
-  .post-head {
-    height: 64px;
-    padding: 14px 20px;
-    color: #125688;
-    font-size: 15px;
-    line-height: 18px;
-    .thumbnail {}
-    .name {
-      display: block;
-    }
-  }
-
-  .image {
-    border-bottom: 1px solid #eeefef;
-    border-top: 1px solid #eeefef;
-  }
-
-  .caption {
-    padding: 24px 24px;
-    font-size: 15px;
-    line-height: 18px;
+  h1{
 
   }
-
-  .form-wrapper {
-    width: 60%;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 40px;
-    border: 1px solid #eeefef;
-    border-radius: 3px;
-  }
-
-  .edit-links {
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
+}
