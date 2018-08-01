@@ -14,7 +14,7 @@
   </table>
 
   <table class="center">
-    <tr><td>Age</td><td><%= @pet.age %> year-old <%= @pet.breed %></td></tr>
+    <tr><td><%= @pet.age %> year-old</td><td> <%= @pet.breed %></td></tr>
   <tr><td>Weight</td><td><%= @pet.weight %>lbs</td></tr>
 </table>
 <table class="cool">
@@ -23,30 +23,24 @@
   <% end %>
 </table>
 
-  <table class="center">
-    <tr class="mid-header"><td>Conditions</td><td>Notes</td></tr>
-  </table>
-  <table class="cool">
-    <% @pet.conditions.each do |condition| %>
-    <tr onclick="location.href='<%= condition_path(condition) %>'">
-      <td><%= condition.title %></td>
-      <td><%= condition.notes %></td>
-    </tr>
-    <% end %>
-  </table>
-  <%= button_to "Edit Profile", edit_pet_path, method: :get %>
-  <%= button_to "Create New Relationship", new_relationship_path, method: :get %>
-  <%= button_to "Edit Relationship", edit_relationship_path, method: :get %>
-  <%= button_to "Add an Appointment", new_appointment_path, method: :get %>
+<table>
+  <tr>
+    <td><%= button_to "Edit Profile", edit_pet_path, method: :get, class: "btn btn-outline-primary"%></td>
+    <td><%= button_to "New Relationship", new_relationship_path, method: :get, class: "btn btn-outline-info" %></td>
+    <td><%= button_to "Edit Relationship", edit_relationship_path, method: :get, class: "btn btn-outline-success" %></td>
+  </tr>
+</table>
 </div>
 
 <div class="column middle">
 
   <% if @pet.appointments.empty? %>
-  <% elsif @pet.appointments.last.logged_time > Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
+  <% elsif @pet.appointments.last.time < Time.now  %>
   <% else %>
-  <h3>Upcoming Appointments:</h3>
-  <%= @pet.appointments.last.logged_time %>
+    <h3 class="mid-header">Upcoming Appointments:</h3>
+      <table class="feed">
+        <tr><td><%= @pet.appointments.last.logged_time %></td></tr>
+      </table>
   <% end %>
 
   <table class="cool-smol">
@@ -150,7 +144,7 @@
 <tr>
   <% if @pet.appointments.empty? %>
   <th>
-  Appointments here!
+  Log Appointments here!
   <% else %>
   <th onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">
     Last Appointment:
@@ -168,7 +162,18 @@
   <% end %>
 </td>
 </tr>
-
+</table>
+<br>
+<table class="cool-smol">
+  <tr class="mid-header"><td>Conditions</td><td>Notes</td></tr>
+</table>
+<table class="cool">
+  <% @pet.conditions.each do |condition| %>
+  <tr onclick="location.href='<%= condition_path(condition) %>'">
+    <td><%= condition.title %></td>
+    <td><%= condition.notes %></td>
+  </tr>
+  <% end %>
 </table>
 
 </div>
