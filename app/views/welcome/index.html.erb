@@ -5,9 +5,30 @@
 		<div class="card">
 			<div class="card-body"
 
+        <div class="custom-card">
+          <div class="card-body">
+            <div class="card-header">
+              Welcome to Pet Tracker!
+            </div>
+        <%= form_tag sessions_path do %>
+        <div class="form-group">
+          <%= label_tag "Username"  %>
+          <%= text_field_tag :name %>
+        </div>
+        <div class="form-group">
+          <%= label_tag "Password" %>
+          <%= password_field_tag :password %>
+        </div>
+        <%= submit_tag "Log in", class: "btn btn-primary btn-transparent" %>
+            <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %>
+        <% end %>
+        </div>
+        </div>
+
+
 		<div class="login-buttons">
-    <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %>
-    <%= button_to "login", login_path, method: :get, class: "btn btn-primary btn-transparent" %>
+    <!-- <%= button_to "login", login_path, class: "btn btn-primary btn-transparent" %> -->
+    <!-- <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %> -->
   </div>
 </div>
 </div>
