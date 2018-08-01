@@ -2,7 +2,7 @@
 <div class="column side">
 <table class="center">
 <tr><td>
-<h1 class="big-header"><%= @owner.name %></h1>
+<h2 class="big-header"><%= @owner.name %></h2>
 </td></tr>
 <tr><td>
 <p class="important"><% if @owner.image.attachment %>
@@ -57,8 +57,7 @@
 <% else %>
 
 <table class="cool">
-  <h1 class="big-header">My Pets!</h1>
-  <tr><td></td><td></td><td></td></tr>
+  <h2 class="big-header">My Pets!</h2>
   <% @owner.pets.each do |pet| %>
     <tr onclick="location.href='<%= pet_path(pet) %>'"><td><%=pet.name%></td> <td><%= pet.recent_activity(pet.most_recent)%></td><td> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></td></tr>
   <% end %>
