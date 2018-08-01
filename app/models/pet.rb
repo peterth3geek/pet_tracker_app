@@ -87,4 +87,8 @@ class Pet < ApplicationRecord
     x
   end
 
+  def sort_my_log
+    self.my_log.flatten.sort_by {|thing| thing.time}.reverse
+  end
+
 end

@@ -9,6 +9,7 @@ class PetsController < ApplicationController
     @food = Food.new
     @waste = Waste.new
     @play = Play.new
+    @appointment = Appointment.new
   end
 
   def new
