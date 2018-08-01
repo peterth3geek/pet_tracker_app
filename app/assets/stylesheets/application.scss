@@ -86,9 +86,22 @@ $background-color: #c0c0c0;
   @include base;
 }
 
+.column {
+  float: left;
+}
+
+.column.side {
+  width: 25%;
+}
+
+.column.middle {
+  width: 50%;
+}
+
 table{
   @include biggy;
   border-collapse: collapse;
+  width: 100%;
   th, td{
     padding: 10px;
     text-align: left;
@@ -100,6 +113,16 @@ table.cool{
   tr:hover {background-color: $pet-color;}
   margin-left: auto;
   margin-right: auto;
+}
+
+table.feed{
+  @include biggy;
+  tr:hover {background-color: $pet-color;}
+  margin-left: auto;
+  margin-right: auto;
+  th, td, tr{
+  text-align: center;
+}
 }
 
 table.center{
