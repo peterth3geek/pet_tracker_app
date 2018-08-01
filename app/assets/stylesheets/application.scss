@@ -11,25 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "bootstrap-sprockets";
-  @import "bootstrap";
-
-  // body {
-  //   background-color: #fafafa;
-  //   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  // }
-
-
-
-
-  .custom-file-control:before{
-    content: "Browse";
-  }
-  .custom-file-control:after{
-    content: "Add files..";
-  }
-
-
 
 $pet-color: #00a3bb;
 $background-color: #c0c0c0;
@@ -133,6 +114,15 @@ table.cool{
   }
 }
 
+table.cool-smol{
+  tr:hover {background-color: $pet-color;}
+  margin-left: auto;
+  margin-right: auto;
+  th, td, tr{
+    border-bottom: 1px solid white;
+  }
+}
+
 table.feed{
   @include biggy;
   tr:hover {background-color: $pet-color;}
@@ -160,6 +150,7 @@ table.center{
     border-bottom: 1px solid white;
   }
 }
+<<<<<<< HEAD
 
 .welcome {
   background-image: url("images/earl.jpg");
@@ -279,3 +270,5 @@ div.login-buttons {
   width: 200px;
   height: 40px;
 }
+=======
+>>>>>>> peter88
