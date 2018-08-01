@@ -12,7 +12,7 @@
  *
  */
  @import "bootstrap";
- 
+
 
 
 
@@ -148,9 +148,7 @@
    }
  }
 
- .welcome {
-   background-image: url("images/earl.jpg");
- }
+
 
  .card {
    margin: auto;
@@ -168,9 +166,10 @@
  }
 
  #main {
+  margin-top: -45px;
  	background: linear-gradient(to bottom, rgba(0,0,0,0.66) 90%, transparent), url(https://preview.ibb.co/fqO4Le/earl.jpg);
  	background-size: cover, cover;
- 	background-position: center, center;
+  background-position: center, center;
  	height: 100vh;
  	width: 100%;
  	display: flex;
