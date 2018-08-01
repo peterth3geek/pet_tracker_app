@@ -22,7 +22,10 @@
 </td></tr>
 </table>
 
+<% if @owner.id == session[:owner_id] %>
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Edit Profile!</button>'.html_safe, edit_owner_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
+<% end %>
+
 </div>
 <div class="column middle">
   <h3 class="mid-header">Recent Activity</h3>

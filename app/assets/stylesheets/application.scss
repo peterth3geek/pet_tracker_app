@@ -33,7 +33,7 @@
  }
 
  @mixin massive(){
-   font-size: 80px;
+   font-size: 60px;
  }
 
  @mixin largy(){
@@ -50,6 +50,14 @@
 
  @mixin central(){
    text-align: center;
+ }
+
+ .logo {
+   @include pet-class;
+   @include central;
+   @include massive;
+   font-weight: 200;
+
  }
 
  .banner {
