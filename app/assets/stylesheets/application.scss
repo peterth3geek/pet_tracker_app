@@ -176,10 +176,12 @@ table.center{
 body {
 	background: #445;
 	color: #FFF;
+  opacity: 0%;
+  height: 100%;
 }
 
 #main {
-	background: linear-gradient(to bottom, rgba(0,0,0,0.66) 100%, transparent), url(https://preview.ibb.co/fqO4Le/earl.jpg);
+	background: linear-gradient(to bottom, rgba(0,0,0,0.66) 90%, transparent), url(https://preview.ibb.co/fqO4Le/earl.jpg);
 	background-size: cover, cover;
 	background-position: center, center;
 	height: 100vh;
@@ -230,4 +232,50 @@ h1:after {
 .is-loading h1:before,
 .is-loading h1:after {
 	width: 0;
+}
+
+
+.btn-primary {
+  &.btn-inverse {
+    @include button-variant($btn-primary-bg, $btn-primary-color, $btn-primary-bg);
+    &:hover {
+      @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-primary-bg, transparent, $btn-primary-bg);
+    &:hover {
+      @include button-variant($btn-primary-bg, darken($btn-primary-bg, 25%), $btn-primary-bg);
+    }
+  }
+}
+
+.btn-success {
+  &.btn-inverse {
+    @include button-variant($btn-success-bg, $btn-success-color, $btn-success-bg);
+    &:hover {
+      @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+    }
+  }
+  &.btn-transparent {
+    @include button-variant($btn-success-bg, transparent, $btn-success-bg);
+    &:hover {
+      @include button-variant($btn-success-bg, darken($btn-success-bg, 25%), $btn-success-bg);
+    }
+  }
+}
+
+
+/* float btns */
+
+div.login-buttons {
+  width: 420px;
+}
+
+.login-buttons input {
+  display: inline;
+  float: left;
+  margin: 0 5px;
+  width: 200px;
+  height: 40px;
 }
