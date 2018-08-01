@@ -1,4 +1,9 @@
 <h2><%= @pet.name %></h2>
+<% if @pet.image.attachment %>
+<%= image_tag @pet.image %>
+<% else %>
+There is no image.
+<% end %>
 <p><%= @pet.age %> year-old <%= @pet.breed %> <%= @pet.species %></p>
 <p>Weight: <%= @pet.weight %>lbs</p>
 <% @pet.relationships.each do |relationship| %>

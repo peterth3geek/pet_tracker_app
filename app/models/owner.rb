@@ -7,13 +7,15 @@ class Owner < ApplicationRecord
   has_many :foods
   has_many :plays
 
+
+
   has_secure_password
 
   # before_validation default_stats
 
   validates :name, uniqueness: true
 
-has_one_attached :avatar
+  has_one_attached :image
 
 def live_feed
   self.pets.map {|pet| pet.most_recent}

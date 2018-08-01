@@ -1,6 +1,17 @@
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
+<<<<<<< HEAD
 <h1 class="banner"><%= @owner.name %></h1>
 <p><img src"<%= @owner.img_url %>" alt="profile picture"></p>
+=======
+<h1><%= @owner.name %></h1>
+
+<p><% if @owner.image.attachment %>
+  <%= image_tag @owner.image %>
+  <% else %>
+  There's no image.
+  <% end %>
+</p>
+>>>>>>> 1c16ed6aec4a821731221649aca20fdb66c06214
 <p><%= @owner.bio %></p>
 
 <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>

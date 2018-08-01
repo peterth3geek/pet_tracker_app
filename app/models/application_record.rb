@@ -19,6 +19,7 @@ class ApplicationRecord < ActiveRecord::Base
     else
       activity_array = input.sort_by do |t|
           t.time
+          # binding.pry
       end
     end
     # binding.pry

@@ -30,6 +30,7 @@ class OwnersController < ApplicationController
   def update
     @owner = find_owner
     if @owner.update(update_params)
+      @owner.image.attach(update_params[:image])
       redirect_to @owner
     else
       render :edit
@@ -42,7 +43,7 @@ class OwnersController < ApplicationController
   end
 
   def update_params
-    params.require(:owner).permit(:name, :bio, :gender, :img_url, :password, :password_confirmation)
+    params.require(:owner).permit(:name, :bio, :gender, :image, :password, :password_confirmation)
   end
 
   def owner_params(*args)
