@@ -167,6 +167,17 @@
    border: 1px sold black;
  }
 
+ .custom-card {
+   margin: auto;
+   width: 100%;
+   border: 1px sold black;
+   opacity: 10%;
+   background-color: rgba(245, 245, 245, 0.1);
+   color: white;
+ }
+ .custom-card-text {
+   color: white;
+ }
 
  /* LANDING PAGE */
  body {
