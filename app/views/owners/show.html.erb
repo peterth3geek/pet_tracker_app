@@ -1,24 +1,28 @@
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
-<<<<<<< HEAD
-<h1 class="banner"><%= @owner.name %></h1>
-<p><img src"<%= @owner.img_url %>" alt="profile picture"></p>
-=======
-<h1><%= @owner.name %></h1>
 
+<table class="center">
+  <td>
+  <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
+  <p class="important">"No Activity Yet!"</p>
+  <% else %>
+  <p class="important"><%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></p>
+  <% end %>
+  </td>
+</table>
+<div class="normal">
+<h1 class="staple"><%= @owner.name %></h1>
 <p><% if @owner.image.attachment %>
   <%= image_tag @owner.image %>
   <% else %>
   There's no image.
   <% end %>
 </p>
->>>>>>> 1c16ed6aec4a821731221649aca20fdb66c06214
-<p><%= @owner.bio %></p>
-
-<% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
-<p class="important">"No Activity Yet!"</p>
+<% if @owner.bio == nil %>
+<%= link_to '<button type="button">Update your Bio!</button>'.html_safe, edit_owner_path(@owner) %>
 <% else %>
-<p class="important"><%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></p>
+<p><%= @owner.bio %></p>
 <% end %>
+</div>
 
 <br>
 <br>
@@ -34,10 +38,14 @@
 <% if @owner.pets.empty? %>
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %>
 <% else %>
-<h2>My Pets!</h2>
-<ul>
+
+<div style="text-align: center;">
+<table class="cool">
+  <h1 class="big-header">My Pets!</h1>
+  <tr><td></td><td></td><td></td></tr>
   <% @owner.pets.each do |pet| %>
-    <li><%= link_to pet.name, pet %> <%= pet.recent_activity(pet.most_recent)%> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></li>
+    <tr onclick="location.href='<%= pet_path(pet) %>'"><td><%=pet.name%></td> <td><%= pet.recent_activity(pet.most_recent)%></td><td> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></td></tr>
   <% end %>
-</ul>
+</table>
+</div>
 <% end %>
