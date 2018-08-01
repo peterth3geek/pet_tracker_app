@@ -1,48 +1,54 @@
-<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
 
-<h1 class="banner"><%= @owner.name %></h1>
-
-
+<div class="column side">
 <table class="center">
-  <td>
-  <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
-  <p class="important">"No Activity Yet!"</p>
-  <% else %>
-  <p class="important"><%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></p>
-  <% end %>
-  </td>
-</table>
-<div class="normal">
-<h1 class="staple"><%= @owner.name %></h1>
-<p><% if @owner.image.attachment %>
-  <%= image_tag @owner.image %>
+<tr><td>
+<h1 class="big-header"><%= @owner.name %></h1>
+</td></tr>
+<tr><td>
+<p class="important"><% if @owner.image.attachment %>
+  <%= image_tag @owner.image, style: 'height:auto;width:300px;' %>
   <% else %>
   There's no image.
   <% end %>
 </p>
-
-
-<p><%= @owner.bio %></p>
-
-<% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
-<p class="important">"No Activity Yet!"</p>
-
+</td></tr>
+<tr><td class="important">
 <% if @owner.bio == nil %>
-<%= link_to '<button type="button">Update your Bio!</button>'.html_safe, edit_owner_path(@owner) %>
+<%= link_to '<button type="button">Update your profile!</button>'.html_safe, edit_owner_path(@owner) %>
 
 <% else %>
 <p><%= @owner.bio %></p>
 <% end %>
-</div>
+</td></tr>
+</table>
 
-<br>
+<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Edit Profile!</button>'.html_safe, edit_owner_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
+</div>
+<div class="column middle">
+  <h3 class="mid-header">Recent Activity</h3>
+<table class="feed">
+  <tr>
+  <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
+  <p>"No Activity Yet!"</p>
+  <% else %>
+  <td onclick="location.href='<%= pet_path(@owner.living_method.pet) %>'"><%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></td>
+  <% end %>
+</tr>
+</table>
+
 <br>
 <% if @owner.appointments.empty? %>
 <%= link_to "Schedule Appointments", new_appointment_path %>
-<% elsif @owner.appointments.last.logged_time < Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
+<% elsif @owner.appointments.last.logged_time > Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
 <% else %>
+<div class="mid-header">
 <h3>Upcoming Appointments:</h3>
+</div>
+<table class="feed">
+  <tr>
+  <td onclick="location.href='<%= appointment_path(@owner.appointments.last)%>'">
 <%= @owner.appointments.last.logged_time %>
+</td></tr></table>
 <% end %>
 <br>
 <br>
@@ -50,7 +56,6 @@
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %>
 <% else %>
 
-<div style="text-align: center;">
 <table class="cool">
   <h1 class="big-header">My Pets!</h1>
   <tr><td></td><td></td><td></td></tr>
@@ -58,7 +63,14 @@
     <tr onclick="location.href='<%= pet_path(pet) %>'"><td><%=pet.name%></td> <td><%= pet.recent_activity(pet.most_recent)%></td><td> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></td></tr>
   <% end %>
 </table>
+<% end %>
 </div>
-<% end %>
+<div class="column side">
+  <h3 class="mid-header"> All Activity</h3>
+  <table class="all-feed">
+  <% @owner.sorted_all_feed.each do |thing| %>
+  <tr><td><%= thing.pet.name %></td> <td><%=thing.class%></td><td><%= thing.logged_time %></td></tr>
+  <% end %>
+</table>
 
-<% end %>
+</div>

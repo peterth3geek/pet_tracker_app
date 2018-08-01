@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-
  */
  @import "bootstrap-sprockets";
   @import "bootstrap";
@@ -54,6 +53,10 @@ $background-color: #c0c0c0;
   font-size: 48px;
 }
 
+@mixin middy(){
+  font-size: 32px;
+}
+
 @mixin biggy(){
   font-size: 24px;
 }
@@ -76,6 +79,13 @@ $background-color: #c0c0c0;
   @include largy;
 }
 
+.mid-header{
+  @include base;
+  @include pet-class;
+  @include central;
+  @include middy;
+}
+
 .staple {
   @include base;
   @include pet-class;
@@ -91,25 +101,64 @@ $background-color: #c0c0c0;
   @include base;
 }
 
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.column.side {
+  width: 25%;
+}
+
+.column.middle {
+  width: 50%;
+}
+
 table{
-  @include biggy;
   border-collapse: collapse;
+  width: 100%;
   th, td{
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid white;
   }
 }
 
 table.cool{
+  @include biggy;
   tr:hover {background-color: $pet-color;}
   margin-left: auto;
   margin-right: auto;
+  th, td, tr{
+    border-bottom: 1px solid white;
+  }
+}
+
+table.feed{
+  @include biggy;
+  tr:hover {background-color: $pet-color;}
+  margin-left: auto;
+  margin-right: auto;
+  th, td, tr{
+  text-align: center;
+}
+}
+
+table.all-feed{
+  tr:hover {background-color: $pet-color;}
+  margin-left: auto;
+  margin-right: auto;
+  th, td, tr{
+  text-align: center;
+}
 }
 
 table.center{
+  @include biggy;
   margin-left: auto;
   margin-right: auto;
+  th, td, tr{
+    border-bottom: 1px solid white;
+  }
 }
 
 .welcome {

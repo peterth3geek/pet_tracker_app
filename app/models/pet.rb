@@ -53,4 +53,38 @@ class Pet < ApplicationRecord
       self.appointments.last
   end
 
+  def all_plays
+    self.plays.map {|play| play}
+  end
+  def all_wastes
+    self.wastes.map {|waste| waste}
+  end
+  def all_foods
+    self.foods.map {|food| food}.delete_if{|x| x.time == nil}
+  end
+  def all_appointments
+    self.appointments.map {|appointment| appointment}
+  end
+
+  def my_log
+    x = []
+    all_of_it = []
+    all_of_it << self.all_plays
+    all_of_it << self.all_wastes
+    all_of_it << self.all_foods
+    all_of_it << self.all_appointments
+    all_of_it.flatten
+    all_of_it.flatten.delete_if {|x| x == nil}
+    all_of_it.flatten.delete_if {|x| x.time == nil}
+    # binding.pry
+    if all_of_it.empty?
+      x << "No Activity Yet!"
+    else
+    x = all_of_it.flatten.sort_by do |t|
+      t.time
+      end
+    end
+    x
+  end
+
 end
