@@ -10,22 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-
  */
- @import "bootstrap-sprockets";
-  @import "bootstrap";
-
-  // body {
-  //   background-color: #fafafa;
-  //   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  // }
-
-  
-
-
-
-
-
 
 $pet-color: #00a3bb;
 $background-color: #c0c0c0;
@@ -47,6 +32,10 @@ $background-color: #c0c0c0;
 
 @mixin largy(){
   font-size: 48px;
+}
+
+@mixin middy(){
+  font-size: 32px;
 }
 
 @mixin biggy(){
@@ -71,6 +60,13 @@ $background-color: #c0c0c0;
   @include largy;
 }
 
+.mid-header{
+  @include base;
+  @include pet-class;
+  @include central;
+  @include middy;
+}
+
 .staple {
   @include base;
   @include pet-class;
@@ -88,6 +84,7 @@ $background-color: #c0c0c0;
 
 .column {
   float: left;
+  padding: 10px;
 }
 
 .column.side {
@@ -105,7 +102,6 @@ table{
   th, td{
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid white;
   }
 }
 
@@ -113,6 +109,9 @@ table.cool{
   tr:hover {background-color: $pet-color;}
   margin-left: auto;
   margin-right: auto;
+  th, td, tr{
+    border-bottom: 1px solid white;
+  }
 }
 
 table.feed{
@@ -128,4 +127,7 @@ table.feed{
 table.center{
   margin-left: auto;
   margin-right: auto;
+  th, td, tr{
+    border-bottom: 1px solid white;
+  }
 }

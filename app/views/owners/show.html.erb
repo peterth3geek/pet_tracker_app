@@ -12,9 +12,9 @@
   <% end %>
 </p>
 </td></tr>
-<tr><td>
+<tr><td class="important">
 <% if @owner.bio == nil %>
-<%= link_to '<button type="button">Update your Bio!</button>'.html_safe, edit_owner_path(@owner) %>
+<%= link_to '<button type="button">Update your profile!</button>'.html_safe, edit_owner_path(@owner) %>
 
 <% else %>
 <p><%= @owner.bio %></p>
@@ -24,8 +24,8 @@
 
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Edit Profile!</button>'.html_safe, edit_owner_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
 </div>
-
 <div class="column middle">
+  <h3 class="mid-header">Recent Activity</h3>
 <table class="feed">
   <tr>
   <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
@@ -39,10 +39,16 @@
 <br>
 <% if @owner.appointments.empty? %>
 <%= link_to "Schedule Appointments", new_appointment_path %>
-<% elsif @owner.appointments.last.logged_time < Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
+<% elsif @owner.appointments.last.logged_time > Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
 <% else %>
+<div class="mid-header">
 <h3>Upcoming Appointments:</h3>
+</div>
+<table class="feed">
+  <tr>
+  <td onclick="location.href='<%= appointment_path(@owner.appointments.last)%>'">
 <%= @owner.appointments.last.logged_time %>
+</td></tr></table>
 <% end %>
 <br>
 <br>
