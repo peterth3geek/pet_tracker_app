@@ -16,7 +16,7 @@ class PetsController < ApplicationController
     role = @pet.are_you_mine(owner)
     # binding.pry
     if role[0] == nil
-      @role = VISITER
+      @role = "Visiter"
     else
       @role = role[0].title
     end

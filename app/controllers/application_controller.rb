@@ -27,10 +27,16 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def user_pet_relations
+  def user_pet_relations_all
+    arr = []
     current_user.pets.each do |pet|
-      return pet.owners
+      arr << pet.owners
     end
+    arr.flatten.uniq
+  end
+
+  def user_pet_relations
+    user_pet_relations_all.delete_if{|owner| owner == current_user}
   end
 
   def valid_owner?
