@@ -41,7 +41,7 @@
     <h3 class="mid-header">Upcoming Appointments:</h3>
       <table class="feed">
         <% if valid_caretaker? %>
-            <tr onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">>
+            <tr onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">
           <% else %>
             <tr>
           <% end %>
@@ -213,7 +213,7 @@
 <h3 class="coolness">Conditions</h3>
 <table class="cool-tiny">
   <% @pet.conditions.each do |condition| %>
-  <% if valid_caretake? %>
+  <% if valid_caretaker? %>
   <tr onclick="location.href='<%= condition_path(condition) %>'">
     <% else %>
     <tr>

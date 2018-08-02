@@ -14,7 +14,12 @@ class PetsController < ApplicationController
     @appointment = Appointment.new
     owner = session[:owner_id]
     role = @pet.are_you_mine(owner)
-    @role = role[0].title
+    # binding.pry
+    if role[0] == nil
+      @role = VISITER
+    else
+      @role = role[0].title
+    end
   end
 
   def new

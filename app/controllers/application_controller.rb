@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   OWNER = "Owner"
   CARETAKER = "Caretaker"
   SITTER = "Sitter"
+  VISITER = "Visiter"
 
   def current_user
     if session[:owner_id]
