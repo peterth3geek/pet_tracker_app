@@ -1,6 +1,13 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
+  def user_now
+    if session[:owner_id]
+      @owner = Owner.find(session[:owner_id])
+    else
+    end
+  end
+
   def logged_time
     if self.time.strftime("%m/%d/%Y") == Time.now.strftime("%m/%d/%Y")
       self.time.strftime("%I:%M %P today.")

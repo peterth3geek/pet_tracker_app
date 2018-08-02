@@ -1,7 +1,9 @@
 class PetsController < ApplicationController
 
   def index
-    @pet = Pet.all
+    owner = Owner.find(session[:owner_id])
+
+    @pets = owner.pets
   end
 
   def show

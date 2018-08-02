@@ -91,4 +91,8 @@ class Pet < ApplicationRecord
     self.my_log.flatten.sort_by {|thing| thing.time}.reverse
   end
 
+  def are_you_mine
+    self.owners.map {|owner| owner.id}
+  end
+
 end

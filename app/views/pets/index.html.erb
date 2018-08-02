@@ -1,0 +1,14 @@
+<div class="column middle">
+<table class="cool">
+  <tr>
+    <th>Name</th>
+    <th>Species</th>
+    <th>Breed</th>
+  </tr>
+<% @pets.each do |pet| %>
+<tr onclick="location.href='<%= pet_path(pet) %>'">
+  <td><%= pet.name %></td><td> <%= pet.species %></td><td> <%= pet.breed %></td>
+</tr>
+<% end %>
+</table>
+</div>
