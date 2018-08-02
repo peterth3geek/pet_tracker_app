@@ -5,7 +5,7 @@
     </tr></td>
     <tr><td>
       <% if @pet.image.attachment %>
-      <%= image_tag @pet.image %>
+      <%= image_tag @pet.image, style: 'height:auto;width:100%;' %>
       <% else %>
       There is no image.
       <% end %>

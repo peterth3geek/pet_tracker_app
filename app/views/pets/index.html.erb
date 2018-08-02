@@ -1,4 +1,7 @@
-<div class="card">
+
+
+
+<!-- <div class="card">
   <div class="card-body">
     <div class="card-header logo-font-form text-primary">
       My Pets
@@ -17,5 +20,23 @@
 <% end %>
 </table>
 </div>
+</div>
+</div> -->
+
+<div class="container">
+<div class="card-group">
+  <% @pets.each do |pet| %>
+  <div class="card">
+    <img class="card-img-top" src="<%= pet.image %>" alt="<%= pet.name %>">
+    <div class="card-body">
+      <h5 class="card-title"><%= pet.name %></h5>
+      <p class="card-text">Pet's bio</p>
+      <p class="card-text"><small class="text-muted">Activities</small></p>
+    </div>
+  </div>
+  <% end %>
+
+
+
 </div>
 </div>
