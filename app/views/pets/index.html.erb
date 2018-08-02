@@ -1,4 +1,7 @@
-<div class="card">
+
+
+
+<!-- <div class="card">
   <div class="card-body">
     <div class="card-header logo-font-form text-primary">
       My Pets
@@ -17,5 +20,34 @@
 <% end %>
 </table>
 </div>
+</div>
+</div> -->
+
+<div class="container custom-cont">
+<div class="card-deck custom-group-width">
+<% @pets.each do |pet| %>
+  <div class="card">
+
+    <% if pet.image.attachment %>
+    <%= image_tag pet.image, class: "card-img-top rounded", style: "width:100%;height:auto;" %>
+    <% else %>
+    There is no image!
+    <% end %>
+
+    <div class="card-body">
+      <h5 class="card-title logo-font-form text-primary"><%= link_to pet.name, pet %></h5>
+      <p class="card-text"><%= pet.species %> - <%= pet.breed %><br>
+        Age: <%= pet.age %><br>
+      Weight: <%= pet.weight %>
+    </p>
+
+      <% pet.relationships.each do |rel| %>
+      <p class="card-text"><small class="text-muted"><%= link_to "#{rel.title} - #{rel.owner.name}", owner_path(rel.owner)%></small></p>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+
+
 </div>
 </div>
