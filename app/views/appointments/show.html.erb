@@ -1,5 +1,15 @@
-<h1><%= @appointment.title %></h1>
-<p><%= @appointment.notes %></h1>
-
-<p>When: <%= @appointment.date.strftime("%m/%d/%Y at %I:%M %p") %></p>
-<p>For: <%= link_to @appointment.pet.name, @appointment.pet %></p>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <%= link_to @appointment.pet.name, pet_path(@appointment.pet), class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title logo-font-form text-primary"><%= @appointment.title %></h5>
+    <p class="card-text"><%= @appointment.notes %></p>
+    <p class="card-text">When: <%= @appointment.date.strftime("%m/%d/%Y at %I:%M %p") %></p>
+    <%= link_to "Delete Appointment", @appointment, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete this appointment?"} %>
+  </div>
+</div>

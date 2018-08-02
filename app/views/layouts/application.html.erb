@@ -25,22 +25,22 @@
     </button>
     <div class="navbar-collapse collapse" id="navbarResponsive" style>
       <ul class="navbar-nav ml-auto navbar-right">
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Home", current_user, class: "nav-link link-size" %>
         </li>
         <% if logged_in? %>
 
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "My Pets", pets_path, class: "nav-link link-size" %>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
             <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link link-size' %>
         </li>
         <% else %>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Login", root_path, class: "nav-link link-size" %>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <%= link_to "Sign Up", signup_path, class: "nav-link link-size" %>
         </li>
         <% end %>
