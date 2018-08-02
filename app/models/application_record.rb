@@ -66,8 +66,12 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
-  def next_appointment
+  def future_appointments
     self.appointments.select {|x| x.time > Time.zone.now}
+  end
+
+  def next_appointment
+    self.future_appointments.first
   end
 
 end

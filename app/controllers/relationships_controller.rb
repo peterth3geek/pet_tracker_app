@@ -12,7 +12,7 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.new(relationship_params)
     if @relationship.valid?
       @relationship.save
-      redirect_to owners_path
+      redirect_to owner_path(@relationship.owner)
     else
       render :edit
     end
@@ -24,13 +24,14 @@ class RelationshipsController < ApplicationController
 
 
   def edit
-    @relationship = Relationship.find_by(pet_id: params[:id])
+    @relationship = Relationship.find(params[:id])
     @pet = Pet.find(params[:id])
   end
 
   def update
-    @relationship = Relationship.find(params[:id])
-    if @relationship.update(relationship_params)
+    binding.pry
+    @relationship = Relationship.find_or_create_by(pet_id: relationship_params[:pet_id], owner_id: relationship_params[:owner_id])
+    if @relationship.update(update_relationship_params)
       # binding.pry
       redirect_to pet_path(@relationship.pet_id)
     else
@@ -41,6 +42,10 @@ class RelationshipsController < ApplicationController
   private
   def relationship_params
     params.require(:relationship).permit(:pet_id, :owner_id, :title)
+  end
+
+  def update_relationship_params
+    params.require(:relationship).permit(:title)
   end
 
 end

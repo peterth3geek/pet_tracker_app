@@ -10,11 +10,13 @@ Add a New Relationship
 
   <label>Add For: </label>
   <%= f.collection_select :pet_id, current_user.pets, :id, :name, class: "custom-select" %>
-</select>
-  <div class="form-group">
-  <%= f.label :title %>
-  <%= f.text_field :title, placeholder: "Walker", class: "form-control" %>
-</div>
+</select><br>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <%= f.label :title, value: "Caretaker" %>
+  <%= f.radio_button :title, $CARETAKER %>
+  <%= f.label :title, value: "Sitter" %>
+  <%= f.radio_button :title, $SITTER%>
+</div><br>
   <%= f.submit "Create Relationship", class: "btn btn-primary"%>
 <% end %>
 </div>

@@ -22,13 +22,12 @@
 <p><%= @owner.bio %></p>
 <% end %>
 </td></tr>
-
+</table>
 <% if @owner.id == session[:owner_id] %>
 <table>
 <tr><%= button_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %> <%= button_to "Edit Profile!", edit_owner_path, method: :get, class: "btn btn-outline-success" %> <%= button_to "Add Partner!", new_relationship_path, method: :get, class: "btn btn-outline-info" %></tr>
 </table>
 <% end %>
-</span>
 </div>
 
 
@@ -56,19 +55,19 @@
 <% if @owner.id == session[:owner_id] %>
 <%= link_to "Schedule Appointments", new_appointment_path %>
 <% end %>
-<% elsif @owner.appointments.last.logged_time > Time.now.strftime("%I:%M %P on %m/%d/%Y")%>
-<% else %>
+<% elsif @owner.appointments.last.logged_time > Time.zone.now.strftime("%I:%M %P on %m/%d/%Y")%>
+<% elsif @owner.next_appointment != nil %> %>
 <div class="mid-header">
 <h3>Upcoming Appointments:</h3>
 </div>
 <table class="feed">
   <tr>
     <% if @owner.id == session[:owner_id] %>
-  <td onclick="location.href='<%= appointment_path(@owner.appointments.last)%>'">
+  <td onclick="location.href='<%= appointment_path(@owner.next_appointment)%>'">
     <% else %>
     <td>
       <% end %>
-<%= @owner.next_appointment.first.pet.name %> - <%= @owner.next_appointment.first.logged_time %>: "<%= @owner.next_appointment.first.title %>"
+<%= @owner.next_appointment.pet.name %> - <%= @owner.next_appointment.logged_time %>: "<%= @owner.next_appointment.title %>"
 </td></tr></table>
 <% end %>
 <br>
@@ -84,6 +83,7 @@
   <% end %>
 </table>
 <% end %>
+
 </div>
 
 
