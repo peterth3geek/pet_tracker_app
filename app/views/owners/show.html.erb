@@ -54,8 +54,8 @@
 <% if @owner.id == session[:owner_id] %>
 <%= link_to "Schedule Appointments", new_appointment_path %>
 <% end %>
-<% elsif @owner.appointments.last.logged_time > Time.now.strftime("%I:%M %P on %m/%d/%Y")%>
-<% else %>
+<% elsif @owner.appointments.last.logged_time > Time.zone.now.strftime("%I:%M %P on %m/%d/%Y")%>
+<% elsif @owner.next_appointment != nil %> %>
 <div class="mid-header">
 <h3>Upcoming Appointments:</h3>
 </div>

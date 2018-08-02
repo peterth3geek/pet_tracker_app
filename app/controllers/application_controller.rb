@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   helper_method :valid_sitter?
   helper_method :valid_caretaker?
 
-  OWNER = "Owner"
-  CARETAKER = "Caretaker"
-  SITTER = "Sitter"
-  VISITER = "Visiter"
+  $OWNER = "Owner"
+  $CARETAKER = "Caretaker"
+  $SITTER = "Sitter"
+  $VISITER = "Visiter"
 
   def current_user
     if session[:owner_id]
@@ -34,15 +34,15 @@ class ApplicationController < ActionController::Base
   end
 
   def valid_owner?
-    @role == OWNER
+    @role == $OWNER
   end
 
   def valid_caretaker?
-    @role == CARETAKER || @role == OWNER
+    @role == $CARETAKER || @role == $OWNER
   end
 
   def valid_sitter?
-    @role == SITTER || @role == CARETAKER || @role == OWNER
+    @role == $SITTER || @role == $CARETAKER || @role == $OWNER
   end
 
 
