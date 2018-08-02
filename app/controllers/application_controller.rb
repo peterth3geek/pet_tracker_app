@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
   helper_method :current_user
   helper_method :user_pet_relations
+  helper_method :valid_owner?
+  helper_method :valid_sitter?
+  helper_method :valid_caretaker?
+
+  OWNER = "Owner"
+  CARETAKER = "Caretaker"
+  SITTER = "Sitter"
 
   def current_user
     if session[:owner_id]
@@ -23,6 +30,18 @@ class ApplicationController < ActionController::Base
     current_user.pets.each do |pet|
       return pet.owners
     end
+  end
+
+  def valid_owner?
+    @role == OWNER
+  end
+
+  def valid_caretaker?
+    @role == CARETAKER || @role == OWNER
+  end
+
+  def valid_sitter?
+    @role == SITTER || @role == CARETAKER || @role == OWNER
   end
 
 

@@ -29,5 +29,16 @@ def sorted_all_feed
   self.all_feed.flatten.sort_by {|thing| thing.time}.reverse
 end
 
+def valid_owner
+  @role == OWNER
+end
+
+def valid_caretaker
+  @role == CARETAKER || @role == OWNER
+end
+
+def valid_sitter
+  @role == SITTER || @role == CARETAKER || @role == OWNER
+end
 
 end

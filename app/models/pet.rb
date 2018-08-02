@@ -94,8 +94,16 @@ class Pet < ApplicationRecord
     self.my_log.flatten.sort_by {|thing| thing.time}.reverse
   end
 
-  def are_you_mine
+  def my_owners
     self.owners.map {|owner| owner.id}
+  end
+
+  def are_you_mine(current_user)
+    self.relationships.select {|rel| rel.owner_id == current_user}
+  end
+
+  def define_role
+    self.are_you_mine.each {|rel|}
   end
 
 end
