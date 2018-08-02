@@ -45,7 +45,12 @@ class PetsController < ApplicationController
     else
       render :edit
     end
+  end
 
+  def destroy
+    @pet = Pet.find(params[:id])
+    @pet.delete
+    redirect_to pets_path 
   end
 
   private

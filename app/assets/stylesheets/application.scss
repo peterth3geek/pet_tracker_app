@@ -12,7 +12,7 @@
  *
  */
  @import "bootstrap";
-
+ul.nav a:hover { color: #fff !important; }
 
  $pet-color: #00a3bb;
  $background-color: #eee;
@@ -375,4 +375,8 @@
 
 .custom-cont {
   width: 60%;
+}
+
+.custom-navbar-bg {
+  background-color: 428bca;
 }
