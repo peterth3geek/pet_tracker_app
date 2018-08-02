@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:owner_id] = @owner.id
       redirect_to owner_path(@owner)
     else
-      redirect_to login_path
+      redirect_to root_path
     end
   end
 
