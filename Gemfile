@@ -6,6 +6,7 @@ ruby '2.3.3'
 gem 'bootstrap-sass'
 gem 'bootstrap', '~> 4.1.3'
 
+gem 'cancancan'
 gem 'bcrypt'
 gem 'jquery-rails'
 gem 'pry-byebug'

@@ -22,7 +22,7 @@
   <tr onclick="location.href='<%= owner_path(relationship.owner) %>'"><td><%= relationship.title %></td><td><%= relationship.owner.name %></td></tr>
   <% end %>
 </table>
-<% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+<% if valid_owner? %>
 <table>
   <tr>
     <%= button_to "Edit Profile", edit_pet_path, method: :get, class: "btn btn-outline-primary"%>
@@ -40,7 +40,12 @@
   <% else %>
     <h3 class="mid-header">Upcoming Appointments:</h3>
       <table class="feed">
-        <tr><td><%= @pet.appointments.last.logged_time %></td></tr>
+        <% if valid_caretaker? %>
+            <tr onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">>
+          <% else %>
+            <tr>
+          <% end %>
+          <td><%= @pet.appointments.last.logged_time %></td></tr>
       </table>
   <% end %>
 
@@ -51,7 +56,7 @@
         <th>
         Log feeding times here!
         <% else %>
-        <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+        <% if valid_caretaker? %>
         <th onclick="location.href='<%= food_path(@pet.foods.last) %>'">Last fed:
           <% else %>
           <th>Last fed:
@@ -59,7 +64,7 @@
         <%=@pet.foods.last.logged_time%>
         <% end %>
       </th>
-      <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+      <% if valid_sitter? %>
     <td>
       <%= form_for @food do |f| %>
       <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
@@ -78,7 +83,7 @@
       <th>
       Log  playtimes here!
       <% else %>
-      <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+      <% if valid_sitter? %>
       <th onclick="location.href='<%= play_path(@pet.plays.last) %>'">Last played with:
       <% else %>
       <th>Last played with:
@@ -86,7 +91,7 @@
     <%= @pet.plays.last.logged_time%>
     <% end %>
   </th>
-  <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+  <% if valid_sitter? %>
   <td>
     <%= form_for @play do |f| %>
     <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
@@ -104,7 +109,7 @@
     <th>
     Log walks here!
     <% else %>
-    <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+    <% if valid_sitter %>
     <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Walk:
       <% else %>
       <th>
@@ -112,7 +117,7 @@
        <%= @pet.wastes.last.logged_time%>
   <% end %>
 </th>
-<% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+<% if valid_sitter? %>
 <td>
   <%= form_for @waste do |f| %>
   <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
@@ -128,7 +133,7 @@
   <th>
   Log scoops here!
   <% else %>
-  <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+  <% if valid_sitter? %>
   <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Scoop:
     <% else %>
     <th>Last Scoop:
@@ -136,7 +141,7 @@
    <%=@pet.wastes.last.logged_time%>
   <% end %>
 </th>
-<% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+<% if valid_sitter? %>
 <td>
   <%= form_for @waste do |f| %>
   <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
@@ -153,7 +158,7 @@
   <th>
   Log Cleanings here!
   <% else %>
-  <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+  <% if valid_sitter? %>
   <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Cage Cleaning:
     <% else %>
     <th>Last cage cleaning:
@@ -161,7 +166,7 @@
   <%= @pet.wastes.last.logged_time %>
   <% end %>
 </th>
-<% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+<% if valid_sitter? %>
 <td>
   <%= form_for @waste do |f| %>
   <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
@@ -180,7 +185,7 @@
   <th>
   Log Appointments here!
   <% else %>
-  <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+  <% if valid_sitter? %>
   <th onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">
     Last Appointment:
     <% else %>
@@ -189,7 +194,7 @@
   <%= @pet.appointments.last.logged_time %>
   <% end %>
 </th>
-<% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+<% if valid_caretaker? %>
 <td>
   <%= form_for @appointment do |f| %>
   <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
@@ -208,7 +213,7 @@
 <h3 class="coolness">Conditions</h3>
 <table class="cool-tiny">
   <% @pet.conditions.each do |condition| %>
-  <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+  <% if valid_caretake? %>
   <tr onclick="location.href='<%= condition_path(condition) %>'">
     <% else %>
     <tr>
@@ -225,7 +230,7 @@
 <h2 class="mid-header">All Activity</h2>
 <table class="all-feed">
 <% @pet.sort_my_log.each do |activity|%>
-<% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
+<% if valid_sitter? %>
 <% if activity.class == Waste %>
   <tr onclick="location.href='<%= waste_path(activity) %>'">
 <% elsif activity.class == Play%>

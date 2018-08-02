@@ -12,6 +12,9 @@ class PetsController < ApplicationController
     @waste = Waste.new
     @play = Play.new
     @appointment = Appointment.new
+    owner = session[:owner_id]
+    role = @pet.are_you_mine(owner)
+    @role = role[0].title
   end
 
   def new
