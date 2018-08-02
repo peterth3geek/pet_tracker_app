@@ -81,13 +81,12 @@
 <!--  Testing code -->
 
 <table class="cool">
-  <tr><p class="big-header"><%= link_to "My Pets!", pets_path %> </p></tr>
-  <% @owner.pets.each do |pet| %>
-    <tr onclick="location.href='<%= pet_path(pet) %>'"><td><%=pet.name%></td> <td><%= pet.recent_activity(pet.most_recent)%></td><td> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></td></tr>
-  <% end %>
+<tr><p class="big-header"><%= link_to "My Pets!", pets_path %> </p></tr>
+<% @owner.pets.each do |pet| %>
+  <tr onclick="location.href='<%= pet_path(pet) %>'"><td><%=pet.name%></td> <td><%= pet.recent_activity(pet.most_recent)%></td><td> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></td></tr>
+<% end %>
 </table>
 <% end %>
-
 </div>
 
 <!-- Testing Code -->
