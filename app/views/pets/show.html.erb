@@ -62,7 +62,7 @@
       <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
     <td>
       <%= form_for @food do |f| %>
-      <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+      <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
       <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
       <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
     </td>
@@ -89,7 +89,7 @@
   <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
   <td>
     <%= form_for @play do |f| %>
-    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
     <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
     <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
   </td><td>
@@ -115,7 +115,7 @@
 <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
 <td>
   <%= form_for @waste do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
 </td><td>
@@ -139,7 +139,7 @@
 <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
 <td>
   <%= form_for @waste do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
 </td><td>
@@ -164,7 +164,7 @@
 <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
 <td>
   <%= form_for @waste do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
 </td><td>
@@ -192,7 +192,7 @@
 <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
 <td>
   <%= form_for @appointment do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %>
+  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
   <%= f.hidden_field :title, value: "Checkup" %>
   <%= f.hidden_field :notes, value: "Take #{@pet.name} in for a Checkup" %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
@@ -205,8 +205,8 @@
 </tr>
 </table>
 <br>
+<h3 class="coolness">Conditions</h3>
 <table class="cool-tiny">
-  <tr class="coolness"><td>Conditions</td><td>Notes</td></tr>
   <% @pet.conditions.each do |condition| %>
   <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
   <tr onclick="location.href='<%= condition_path(condition) %>'">
