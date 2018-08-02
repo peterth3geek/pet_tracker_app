@@ -62,11 +62,11 @@
 <table class="feed">
   <tr>
     <% if @owner.id == session[:owner_id] %>
-  <td onclick="location.href='<%= appointment_path(@owner.appointments.last)%>'">
+  <td onclick="location.href='<%= appointment_path(@owner.next_appointment)%>'">
     <% else %>
     <td>
       <% end %>
-<%= @owner.next_appointment.first.pet.name %> - <%= @owner.next_appointment.first.logged_time %>: "<%= @owner.next_appointment.first.title %>"
+<%= @owner.next_appointment.pet.name %> - <%= @owner.next_appointment.logged_time %>: "<%= @owner.next_appointment.title %>"
 </td></tr></table>
 <% end %>
 <br>

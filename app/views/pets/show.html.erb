@@ -41,11 +41,11 @@
     <h3 class="mid-header">Upcoming Appointments:</h3>
       <table class="feed">
         <% if valid_caretaker? %>
-            <tr onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">
+            <tr onclick="location.href='<%= appointment_path(@pet.next_appointment) %>'">
           <% else %>
             <tr>
           <% end %>
-          <td><%= @pet.appointments.last.logged_time %></td></tr>
+          <td><%= @pet.next_appointment.logged_time %></td></tr>
       </table>
   <% end %>
 
@@ -109,7 +109,7 @@
     <th>
     Log walks here!
     <% else %>
-    <% if valid_sitter %>
+    <% if valid_sitter? %>
     <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Walk:
       <% else %>
       <th>
