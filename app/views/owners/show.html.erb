@@ -22,13 +22,12 @@
 <p><%= @owner.bio %></p>
 <% end %>
 </td></tr>
-
+</table>
 <% if @owner.id == session[:owner_id] %>
 <table>
 <tr><%= button_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %> <%= button_to "Edit Profile!", edit_owner_path, method: :get, class: "btn btn-outline-success" %> <%= button_to "Add Partner!", new_relationship_path, method: :get, class: "btn btn-outline-info" %></tr>
 </table>
 <% end %>
-</span>
 </div>
 
 
@@ -84,6 +83,7 @@
   <% end %>
 </table>
 <% end %>
+
 </div>
 
 
