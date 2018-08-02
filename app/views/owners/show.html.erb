@@ -6,7 +6,7 @@
 </td></tr>
 <tr><td>
 <p class="important"><% if @owner.image.attachment %>
-  <%= image_tag @owner.image, style: 'height:auto;width:300px;' %>
+  <%= image_tag @owner.image, style: 'height:auto;width:100%;' %>
   <% else %>
   There's no image.
   <% end %>
@@ -23,10 +23,13 @@
 </table>
 
 <% if @owner.id == session[:owner_id] %>
-<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %> <%= link_to '<button type="button">Edit Profile!</button>'.html_safe, edit_owner_path %> <%= link_to '<button type="button">Add a Partner!</button>'.html_safe, new_relationship_path %>
+<table>
+<tr><%= button_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %> <%= button_to "Edit Profile!", edit_owner_path, method: :get, class: "btn btn-outline-success" %> <%= button_to "Add Partner!", new_relationship_path, method: :get, class: "btn btn-outline-info" %></tr>
+</table>
 <% end %>
-
 </div>
+
+
 <div class="column middle">
   <h3 class="mid-header">Recent Activity</h3>
 <table class="feed">
@@ -60,18 +63,30 @@
 <% else %>
 
 <table class="cool">
-  <h2 class="big-header">My Pets!</h2>
+  <tr><p class="big-header">My Pets!</p></tr>
   <% @owner.pets.each do |pet| %>
     <tr onclick="location.href='<%= pet_path(pet) %>'"><td><%=pet.name%></td> <td><%= pet.recent_activity(pet.most_recent)%></td><td> <%= pet.most_recent == "No Activity Yet!" ? "" : "at #{pet.most_recent.logged_time}" %></td></tr>
   <% end %>
 </table>
 <% end %>
 </div>
+
+
 <div class="column side">
   <h3 class="mid-header"> All Activity</h3>
   <table class="all-feed">
-  <% @owner.sorted_all_feed.each do |thing| %>
-  <tr><td><%= thing.pet.name %></td> <td><%=thing.class%></td><td><%= thing.logged_time %></td></tr>
+  <% @owner.sorted_all_feed.each do |activity| %>
+  <% if activity.class == Waste %>
+    <tr onclick="location.href='<%= waste_path(activity) %>'">
+  <% elsif activity.class == Play%>
+    <tr onclick="location.href='<%= play_path(activity) %>'">
+  <% elsif activity.class == Food%>
+    <tr onclick="location.href='<%= food_path(activity) %>'">
+  <% elsif activity.class == Appointment%>
+    <tr onclick="location.href='<%= appointment_path(activity) %>'">
+  <% end %>
+    <td><%= activity.pet.name %></td> <td><%=activity.pet.recent_activity(activity)%></td><td><%= activity.logged_time %></td>
+  </tr>
   <% end %>
 </table>
 

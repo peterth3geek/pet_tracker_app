@@ -25,9 +25,9 @@
 
 <table>
   <tr>
-    <td><%= button_to "Edit Profile", edit_pet_path, method: :get, class: "btn btn-outline-primary"%></td>
-    <td><%= button_to "New Relationship", new_relationship_path, method: :get, class: "btn btn-outline-info" %></td>
-    <td><%= button_to "Edit Relationship", edit_relationship_path, method: :get, class: "btn btn-outline-success" %></td>
+    <%= button_to "Edit Profile", edit_pet_path, method: :get, class: "btn btn-outline-primary"%>
+    <%= button_to "New Relationship", new_relationship_path, method: :get, class: "btn btn-outline-info" %>
+    <%= button_to "Edit Relationship", edit_relationship_path, method: :get, class: "btn btn-outline-success" %>
   </tr>
 </table>
 </div>
@@ -180,9 +180,19 @@
 
 <div class="column side">
 <h2 class="mid-header">All Activity</h2>
-<table class="cool">
+<table class="all-feed">
 <% @pet.sort_my_log.each do |activity|%>
-<tr><td><%= activity.pet.name %></td> <td><%=activity.class%></td><td><%= activity.logged_time %></td></tr>
+<% if activity.class == Waste %>
+  <tr onclick="location.href='<%= waste_path(activity) %>'">
+<% elsif activity.class == Play%>
+  <tr onclick="location.href='<%= play_path(activity) %>'">
+<% elsif activity.class == Food%>
+  <tr onclick="location.href='<%= food_path(activity) %>'">
+<% elsif activity.class == Appointment%>
+  <tr onclick="location.href='<%= appointment_path(activity) %>'">
+<% end %>
+
+  <td><%= activity.pet.name %></td> <td><%=@pet.recent_activity(activity)%></td><td><%= activity.logged_time %></td></tr>
 <% end %>
 </table>
 

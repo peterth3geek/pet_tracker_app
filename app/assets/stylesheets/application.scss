@@ -14,12 +14,14 @@
  @import "bootstrap";
 
 
-
-
-
-
  $pet-color: #00a3bb;
  $background-color: #c0c0c0;
+
+//  @media screen and (min-width: 300px) {
+//     #grid[data-columns]::before {
+//         content: '3 .column, 2 .column.side, 1 .column.middle';
+//     }
+// }
 
  @mixin pet-class {
    color: $pet-color;
@@ -45,7 +47,7 @@
  }
 
  @mixin biggy(){
-   font-size: 24px;
+   font-size: 18px;
  }
 
  @mixin central(){
@@ -72,6 +74,7 @@
    @include pet-class;
    @include central;
    @include largy;
+   background-color: transparent;
  }
 
  .mid-header{
@@ -102,11 +105,11 @@
  }
 
  .column.side {
-   width: 25%;
+   width: 25vw;
  }
 
  .column.middle {
-   width: 50%;
+   width: 50vw;
  }
 
  table{
@@ -142,7 +145,6 @@
    margin-left: auto;
    margin-right: auto;
    th, td, tr{
-
 
    }
  }
