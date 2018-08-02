@@ -2,7 +2,7 @@
 <div class="container">
 <div class="card-columns">
 <% current_user.pets.each do |pet| %>
-<% pet.appointments.each do |app| %>
+<% pet.ordered_appointments.each do |app| %>
   <div class="card">
 
     <div class="card-body">

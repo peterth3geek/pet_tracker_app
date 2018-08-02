@@ -66,6 +66,10 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
+  def ordered_appointments
+    self.appointments.sort_by {|app| app.time}
+  end
+
   def future_appointments
     self.appointments.select {|x| x.time > Time.zone.now}
   end
