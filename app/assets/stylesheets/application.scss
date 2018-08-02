@@ -12,10 +12,10 @@
  *
  */
  @import "bootstrap";
-ul.nav a:hover { color: #fff !important; }
+
 
  $pet-color: #00a3bb;
- $background-color: #eee;
+ $background-color: #c0c0c0;
 
 //  @media screen and (min-width: 300px) {
 //     #grid[data-columns]::before {
@@ -206,9 +206,9 @@ ul.nav a:hover { color: #fff !important; }
    margin: auto;
    width: 100%;
    border: 1px sold black;
-   height: 260px;
    opacity: 10%;
    background-color: rgba(245, 245, 245, 0.1);
+   color: white;
  }
  .custom-card-text {
    color: white;
@@ -376,4 +376,8 @@ ul.nav a:hover { color: #fff !important; }
 
 .custom-navbar-bg {
   background-color: 428bca;
+
+.scroll-div{
+  overflow: scroll;
+
 }
