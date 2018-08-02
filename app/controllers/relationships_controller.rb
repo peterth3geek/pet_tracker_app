@@ -29,7 +29,6 @@ class RelationshipsController < ApplicationController
   end
 
   def update
-    binding.pry
     @relationship = Relationship.find_or_create_by(pet_id: relationship_params[:pet_id], owner_id: relationship_params[:owner_id])
     if @relationship.update(update_relationship_params)
       # binding.pry
