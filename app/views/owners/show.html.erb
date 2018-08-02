@@ -25,7 +25,9 @@
 </table>
 <% if @owner.id == session[:owner_id] %>
 <table>
-<tr><%= button_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %> <%= button_to "Edit Profile!", edit_owner_path, method: :get, class: "btn btn-outline-success" %> <%= button_to "Add Partner!", new_relationship_path, method: :get, class: "btn btn-outline-info" %></tr>
+<tr><%= button_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %> <%= button_to "Edit Profile!", edit_owner_path, method: :get, class: "btn btn-outline-success" %> <%= button_to "Add Partner!", new_relationship_path, method: :get, class: "btn btn-outline-info" %>
+  <%= link_to "Delete Profile", @owner, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete your profile?"} %>
+</tr>
 </table>
 <% end %>
 </div>
@@ -76,6 +78,8 @@
 <%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %>
 <% else %>
 
+<!--  Testing code -->
+
 <table class="cool">
   <tr><p class="big-header"><%= link_to "My Pets!", pets_path %> </p></tr>
   <% @owner.pets.each do |pet| %>
@@ -86,6 +90,7 @@
 
 </div>
 
+<!-- Testing Code -->
 
 <div class="column side">
   <h3 class="mid-header"> All Activity</h3>

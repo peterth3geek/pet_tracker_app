@@ -28,7 +28,7 @@
     <%= button_to "Edit Profile", edit_pet_path, method: :get, class: "btn btn-outline-primary"%>
     <%= button_to "New Relationship", new_relationship_path, method: :get, class: "btn btn-outline-info" %>
     <%= button_to "Edit Relationship", edit_relationship_path, method: :get, class: "btn btn-outline-success" %>
-    <%= button_to "Delete Profile", @pet, class: "btn btn-outline-danger", confirm: "Are you sure you want to delete #{@pet.name}?", method: :delete %>
+    <%= link_to "Delete Profile", @pet, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete #{@pet.name}?"} %>
   </tr>
 </table>
 <% end %>
