@@ -5,7 +5,7 @@
 
         <div class="custom-card">
           <div class="card-body">
-            <div class="card-header, logo-font">
+            <div class="card-header logo-font">
               Welcome to PeTracker!
               <hr>
             </div>
@@ -18,10 +18,10 @@
           <span class="label-font"><%= label_tag "Password" %></span>
           <%= password_field_tag :password %>
         </div>
-        <%= submit_tag "login", class: "btn btn-primary btn-transparent" %>
-        <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %>
-        <% end %>
+        <div class="login-buttons"><%= submit_tag "login", class: "btn btn-primary btn-transparent" %>
 
+        <% end %>
+        <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %></div>
         </div>
 
         </div>

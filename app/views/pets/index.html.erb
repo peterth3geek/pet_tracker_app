@@ -1,9 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-header logo-font-form text-primary">
+      My Pets
+    </div>
 <div class="column middle">
 <table class="cool">
   <tr>
-    <th>Name</th>
-    <th>Species</th>
-    <th>Breed</th>
+    <th class="text-primary">Name</th>
+    <th class="text-primary">Species</th>
+    <th class="text-primary">Breed</th>
   </tr>
 <% @pets.each do |pet| %>
 <tr onclick="location.href='<%= pet_path(pet) %>'">
@@ -11,4 +16,6 @@
 </tr>
 <% end %>
 </table>
+</div>
+</div>
 </div>
