@@ -60,7 +60,8 @@
 <%= link_to "Schedule Appointments", new_appointment_path %>
 <% end %>
 <% elsif @owner.appointments.last.logged_time > Time.zone.now.strftime("%I:%M %P on %m/%d/%Y")%>
-<% elsif @owner.next_appointment != nil %> %>
+<% elsif @owner.next_appointment != nil %>
+<div class="jumbotron">
 <div class="mid-header">
 <h3>Upcoming Appointments:</h3>
 </div>
@@ -73,6 +74,7 @@
       <% end %>
 <%= @owner.next_appointment.pet.name %> - <%= @owner.next_appointment.logged_time %>: "<%= @owner.next_appointment.title %>"
 </td></tr></table>
+</div>
 <% end %>
 <br>
 <br>
@@ -81,7 +83,7 @@
 <% else %>
 
 <!--  Testing code -->
-
+<div class="jumbotron">
 <table class="cool">
 <tr><p class="big-header"><%= link_to "My Pets!", pets_path %> </p></tr>
 <% @owner.pets.each do |pet| %>
@@ -89,12 +91,15 @@
 <% end %>
 </table>
 <% end %>
+
+</div>
 </div>
 
 <!-- Testing Code -->
 
 <div class="column side">
   <h3 class="mid-header"> All Activity</h3>
+  <div class="scroll-div">
   <table class="all-feed">
   <% @owner.sorted_all_feed.each do |activity| %>
   <% if @owner.id == session[:owner_id] %>
@@ -114,5 +119,6 @@
   </tr>
   <% end %>
 </table>
+</div>
 
 </div>
