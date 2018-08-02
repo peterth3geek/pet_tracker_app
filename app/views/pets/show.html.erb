@@ -40,6 +40,7 @@
   <% if @pet.appointments.empty? %>
   <% elsif @pet.appointments.last.time < Time.now  %>
   <% else %>
+  <div class="jumbotron">
     <h3 class="mid-header">Upcoming Appointments:</h3>
       <table class="feed">
         <% if valid_caretaker? %>
@@ -49,6 +50,7 @@
           <% end %>
           <td><%= @pet.next_appointment.logged_time %></td></tr>
       </table>
+  </div>
   <% end %>
 <div class="jumbotron">
   <%= form_for @food do |f| %>
