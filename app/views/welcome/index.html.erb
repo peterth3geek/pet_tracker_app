@@ -2,27 +2,28 @@
 	<h1>
 
 
-		<div class="card">
-			<div class="card-body"
 
         <div class="custom-card">
           <div class="card-body">
-            <div class="card-header">
-              Welcome to Pet Tracker!
+            <div class="card-header, logo-font">
+              Welcome to PeTracker!
+              <hr>
             </div>
         <%= form_tag sessions_path do %>
         <div class="form-group">
-          <%= label_tag "Username"  %>
+        <span class="label-font">  <%= label_tag "Username" %></span>
           <%= text_field_tag :name %>
         </div>
         <div class="form-group">
-          <%= label_tag "Password" %>
+          <span class="label-font"><%= label_tag "Password" %></span>
           <%= password_field_tag :password %>
         </div>
-        <%= submit_tag "Log in", class: "btn btn-primary btn-transparent" %>
-            <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %>
+        <%= submit_tag "login", class: "btn btn-primary btn-transparent" %>
+        <%= button_to "sign up", signup_path, method: :get, class: "btn btn-success btn-transparent" %>
         <% end %>
+
         </div>
+
         </div>
 
 

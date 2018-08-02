@@ -206,9 +206,9 @@
    margin: auto;
    width: 100%;
    border: 1px sold black;
+   height: 240px;
    opacity: 10%;
    background-color: rgba(245, 245, 245, 0.1);
-   color: white;
  }
  .custom-card-text {
    color: white;
@@ -337,3 +337,28 @@
    width: 200px;
    height: 40px;
  }
+
+
+.resize-svg {
+  width: 30px;
+  height: 30px;
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: url("https://fonts.googleapis.com/css?family=Lobster");
+}
+
+.logo-font {
+  font-family: "Lobster", cursive;
+  font-size: 40px;
+  color: white;
+}
+
+.link-size {
+  font-size: 20px;
+}
+
+.label-font {
+  color: white;
+}
