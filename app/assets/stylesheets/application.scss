@@ -95,6 +95,12 @@
    @include central
  }
 
+ .coolness{
+   @include base;
+   @include pet-class;
+   @include biggy;
+ }
+
  .normal {
    @include base;
  }
@@ -141,6 +147,16 @@
      font-weight: 200;
    }
  }
+
+ table.cool-tiny{
+   tr:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+     border-bottom: 1px solid white;
+   }
+ }
+
  table.cool-button{
    margin-left: auto;
    margin-right: auto;

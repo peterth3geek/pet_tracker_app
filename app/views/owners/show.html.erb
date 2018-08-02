@@ -38,7 +38,13 @@
   <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
   <p>"No Activity Yet!"</p>
   <% else %>
-  <td onclick="location.href='<%= pet_path(@owner.living_method.pet) %>'"><%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></td>
+  <% if @owner.id == session[:owner_id] %>
+  <td onclick="location.href='<%= pet_path(@owner.living_method.pet) %>'">
+    <% else %>
+    <td>
+      <% end %>
+
+  <%= @owner.living_method.pet.name %> <%= @owner.recent_activity(@owner.living_method) %> at <%= @owner.living_method.logged_time %></td>
   <% end %>
 </tr>
 </table>
@@ -55,7 +61,11 @@
 </div>
 <table class="feed">
   <tr>
+    <% if @owner.id == session[:owner_id] %>
   <td onclick="location.href='<%= appointment_path(@owner.appointments.last)%>'">
+    <% else %>
+    <td>
+      <% end %>
 <%= @owner.appointments.last.logged_time %>
 </td></tr></table>
 <% end %>
@@ -79,6 +89,7 @@
   <h3 class="mid-header"> All Activity</h3>
   <table class="all-feed">
   <% @owner.sorted_all_feed.each do |activity| %>
+  <% if @owner.id == session[:owner_id] %>
   <% if activity.class == Waste %>
     <tr onclick="location.href='<%= waste_path(activity) %>'">
   <% elsif activity.class == Play%>
@@ -87,6 +98,9 @@
     <tr onclick="location.href='<%= food_path(activity) %>'">
   <% elsif activity.class == Appointment%>
     <tr onclick="location.href='<%= appointment_path(activity) %>'">
+  <% end %>
+  <% else %>
+  <tr>
   <% end %>
     <td><%= activity.pet.name %></td> <td><%=activity.pet.recent_activity(activity)%></td><td><%= activity.logged_time %></td>
   </tr>

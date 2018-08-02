@@ -205,10 +205,8 @@
 </tr>
 </table>
 <br>
-<table class="cool-smol">
-  <tr class="mid-header"><td>Conditions</td><td>Notes</td></tr>
-</table>
-<table class="cool">
+<table class="cool-tiny">
+  <tr class="coolness"><td>Conditions</td><td>Notes</td></tr>
   <% @pet.conditions.each do |condition| %>
   <% if @pet.are_you_mine.any? {|owner| owner == session[:owner_id]} %>
   <tr onclick="location.href='<%= condition_path(condition) %>'">
