@@ -29,4 +29,5 @@ def sorted_all_feed
   self.all_feed.flatten.sort_by {|thing| thing.time}.reverse
 end
 
+
 end

@@ -39,7 +39,9 @@ class ApplicationRecord < ActiveRecord::Base
       "was played with"
     elsif input.class == Food
       "was fed"
-    elsif input.class == Appointment
+    elsif input.class == Appointment && input.time >= Time.zone.now
+      "has an appointment"
+    elsif input.class == Appointment && input.time < Time.zone.now
       "had an appointment"
     elsif input.pet.species.downcase == "dog"
       "was walked"
@@ -64,5 +66,8 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
+  def next_appointment
+    self.appointments.select {|x| x.time > Time.zone.now}
+  end
 
 end

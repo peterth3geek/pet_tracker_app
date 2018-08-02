@@ -27,6 +27,9 @@ class Pet < ApplicationRecord
     act << max_appts
     act << max_wastes
     act.delete_if {|x| x == nil}
+    # binding.pry
+    act.delete_if {|x| x.time == nil}
+    act.delete_if {|x| x.time > Time.zone.now}
     if act.empty?
       x << "No Activity Yet!"
     else

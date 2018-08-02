@@ -30,7 +30,9 @@ class OwnersController < ApplicationController
   def update
     @owner = find_owner
     if @owner.update(update_params)
-      @owner.image.attach(update_params[:image])
+      if update_params[:image]
+        @owner.image.attach(update_params[:image])
+      end
       redirect_to @owner
     else
       render :edit
