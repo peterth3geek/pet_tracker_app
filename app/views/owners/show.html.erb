@@ -14,8 +14,9 @@
 </td></tr>
 <tr><td class="important">
 <% if @owner.bio == nil %>
+<% if @owner.id == session[:owner_id] %>
 <%= link_to '<button type="button">Update your profile!</button>'.html_safe, edit_owner_path(@owner) %>
-
+<% end %>
 <% else %>
 <p><%= @owner.bio %></p>
 <% end %>
@@ -44,7 +45,9 @@
 
 <br>
 <% if @owner.appointments.empty? %>
+<% if @owner.id == session[:owner_id] %>
 <%= link_to "Schedule Appointments", new_appointment_path %>
+<% end %>
 <% elsif @owner.appointments.last.logged_time > Time.now.strftime("%I:%M %P on %m/%d/%Y")  %>
 <% else %>
 <div class="mid-header">
