@@ -1,13 +1,26 @@
-<ul>
-  <% current_user.pets.each do |pet| %>
-    <li><%= link_to pet.name, pet %></li>
-    Appointments:
-    <% if pet.appointments.count > 0 %>
-    <ul><% pet.appointments.each do |appt| %>
-      <li><%= link_to appt.title, appt %></li>
+
+<div class="container">
+<div class="card-columns">
+<% current_user.pets.each do |pet| %>
+<% pet.appointments.each do |app| %>
+  <div class="card">
+
+    <div class="card-body">
+      <h5 class="card-title logo-font-form text-primary"><%= link_to pet.name, pet %></h5>
+      <h4><%= app.logged_time %></h4>
+      <h5><%= app.title %></h5>
+      <p class="card-text">
+        <%= app.notes %>
+    </p>
+
+      <% pet.relationships.each do |rel| %>
+      <p class="card-text"><small class="text-muted"><%= link_to "#{rel.title} - #{rel.owner.name}", owner_path(rel.owner)%></small></p>
       <% end %>
-    <% else %>
-    This pet currently has no appointments.
-    <% end %></ul>
+    </div>
+  </div>
   <% end %>
-</ul>
+  <% end %>
+
+
+</div>
+</div>
