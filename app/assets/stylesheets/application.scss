@@ -214,9 +214,11 @@
    border: 1px sold black;
    opacity: 10%;
    background-color: rgba(245, 245, 245, 0.1);
+   height: 250px;
    color: white;
  }
  .custom-card-text {
+
    color: white;
  }
 
@@ -387,4 +389,8 @@
   max-height: 80vh;
   overflow: scroll;
 
+}
+
+.custom-card-body {
+  height: 230px;
 }
