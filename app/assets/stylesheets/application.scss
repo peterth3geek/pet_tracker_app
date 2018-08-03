@@ -361,6 +361,9 @@
   height: 30px;
 }
 
+.larger-form-button{
+  width: 15vw;
+}
 
 
 .logo-font {
@@ -392,6 +395,24 @@
   grid-template-columns: repeat(3, 2fr);
   grid-gap: 20px 20px;
 }
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.pet-grid {
+  align: left;
+  align-items: center;
+  text-align: left;
+  display: grid;
+  justify-content: left;
+  grid-template-columns: repeat(3, 2fr);
+  grid-gap: 10px 10px;
+}
+
 
 // .custom-cont {
 //   width: 60%;

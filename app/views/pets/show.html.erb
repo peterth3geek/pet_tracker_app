@@ -70,7 +70,7 @@
           <%= f.hidden_field :time, value: Time.zone.now%>
           <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
           <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-          <%= f.submit "Give Meal!",class: "btn btn-outline-primary", turbolinks: false %>
+          <%= f.submit "Give Meal!",class: "btn btn-outline-primary larger-form-button", turbolinks: false %>
           <% end %>
           <%= link_to "New Meal Event", new_food_path, class: "btn btn-outline-primary", method: :get %>
         <% end %>
@@ -95,7 +95,7 @@
     <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
     <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
     <td class="center-it">
-    <%= f.submit "Log Activity!", class: "btn btn-outline-success" %>
+    <%= f.submit "Log Activity!", class: "btn btn-outline-success larger-form-button" %>
     <% end %>
 <%= link_to "New Activity", new_play_path, class: "btn btn-outline-success", method: :get %>
   <% end %>
@@ -118,7 +118,7 @@
   <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-  <%= f.submit "Walk!", class: "btn btn-outline-info" %>
+  <%= f.submit "Walk!", class: "btn btn-outline-info larger-form-button" %>
   <% end %>
 <%= link_to "New Walk", new_waste_path, class: "btn btn-outline-info", method: :get %>
 <% end %>
@@ -138,7 +138,7 @@
   <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-  <%= f.submit "Scoop!", class: "btn btn-outline-info"  %>
+  <%= f.submit "Scoop!", class: "btn btn-outline-info larger-form-button"  %>
   <% end %>
 <%= link_to "New Scoop", new_waste_path, class: "btn btn-outline-info", method: :get %>
 <% end %>
@@ -159,7 +159,7 @@
   <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-  <%= f.submit "Clean!", class: "btn btn-outline-info" %>
+  <%= f.submit "Clean!", class: "btn btn-outline-info larger-form-button" %>
   <% end %>
   <% end %>
 <%= link_to "New Cleaning", new_waste_path, class: "btn btn-outline-info", method: :get %>
@@ -191,7 +191,7 @@
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
 </td>
 <td>
-    <%= f.submit "Create Appointment!", class: "btn btn-outline-secondary" %>
+    <%= f.submit "Create Appointment!", class: "btn btn-outline-secondary larger-form-button" %>
 </td>
   <% end %>
 <% end %>
@@ -200,9 +200,9 @@
 
 <br>
 
-<h3 class="coolness">Conditions</h3>
+<h3 class="mid-header">Conditions</h3>
 <% if valid_owner? %>
-<%= link_to "New condition", new_condition_path, method: :get, active: true, class: "btn btn-outline-info" %>
+<%= link_to "New condition", new_condition_path, method: :get, active: true, class: "btn btn-outline-info larger-form-button" %>
 <% end %>
 <table class="cool-tiny">
   <% @pet.conditions.each do |condition| %>
