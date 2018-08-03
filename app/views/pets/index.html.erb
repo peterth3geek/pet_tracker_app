@@ -24,9 +24,11 @@
 </div> -->
 
 <div class="container custom-cont">
-<div class="card-column custom-group-width">
+  <!-- <div class="row"> -->
+
+<div class="custom-group-width ">
 <% @pets.each do |pet| %>
-  <div class="card">
+  <div class="card custom-card-width">
 
     <% if pet.image.attachment %>
     <%= image_tag pet.image, class: "card-img-top rounded", style: "width:100%;height:auto;" %>
@@ -47,7 +49,7 @@
     </div>
   </div>
   <% end %>
-
+<!-- </div> -->
 
 </div>
 </div>

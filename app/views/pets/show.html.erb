@@ -5,7 +5,7 @@
     </tr></td>
     <tr><td>
       <% if @pet.image.attachment %>
-      <%= image_tag @pet.image, style: 'height:auto;width:100%;' %>
+      <%= image_tag @pet.image, style: 'height:auto;width:100%;', class: "jumbo-shadow"%>
       <% else %>
       There is no image.
       <% end %>
@@ -40,7 +40,7 @@
   <% if @pet.appointments.empty? %>
   <% elsif @pet.appointments.last.time < Time.now  %>
   <% else %>
-  <div class="jumbotron">
+  <div class="jumbotron jumbo-shadow">
     <h3 class="mid-header">Upcoming Appointments:</h3>
       <table class="feed">
         <% if valid_caretaker? %>
@@ -52,7 +52,7 @@
       </table>
   </div>
   <% end %>
-<div class="jumbotron">
+<div class="jumbotron jumbo-shadow">
   <%= form_for @food do |f| %>
   <table class="cool-smol">
     <h2 class="big-header">Log Activity</h2>
