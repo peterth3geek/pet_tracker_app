@@ -5,9 +5,10 @@ Add a New Relationship
 </div>
 <div class="card-body">
 <%= form_for @relationship do |f| %>
-  <label>Select an Owner/Walker: </label>
-  <%= f.collection_select :owner_id, Owner.all, :id, :name %><br/>
-
+  <label>User to connect with: </label>
+  <%= f.fields_for :owners do |of|  %><br/>
+  <%= of.text_field :name %>
+  <% end %><br>
   <label>Add For: </label>
   <%= f.collection_select :pet_id, current_user.pets, :id, :name, class: "custom-select" %>
 </select><br>
