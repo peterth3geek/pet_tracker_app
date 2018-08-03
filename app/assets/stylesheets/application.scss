@@ -355,12 +355,6 @@
    height: 40px;
  }
 
- .pet-inline input{
-   display: inline;
-   float: left;
-   width: 20%;
- }
-
 
 .resize-svg {
   width: 30px;
@@ -398,22 +392,6 @@
   grid-template-columns: repeat(3, 2fr);
   grid-gap: 20px 20px;
 }
-.flexbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
-
-.pet-grid {
-  align: left;
-  align-items: center;
-  text-align: left;
-  display: grid;
-  justify-content: left;
-  grid-template-columns: repeat(3, 2fr);
-  grid-gap: 20px 20px;
-}
 
 // .custom-cont {
 //   width: 60%;
@@ -439,4 +417,8 @@
 .my-pets {
   font-family: "Lobster", cursive;
 
+}
+
+.jumbo-custom-bg {
+  background-color: #f5f5f5;
 }
