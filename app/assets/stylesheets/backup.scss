@@ -1,0 +1,390 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+ @import "bootstrap";
+
+
+ $pet-color: #00a3bb;
+ $background-color: #c0c0c0;
+
+//  @media screen and (min-width: 300px) {
+//     #grid[data-columns]::before {
+//         content: '3 .column, 2 .column.side, 1 .column.middle';
+//     }
+// }
+
+ @mixin pet-class {
+   color: $pet-color;
+ }
+
+ @mixin base() {
+   background-color: $background-color;
+   font-weight: 200;
+   color: #000;
+   text-align: left;
+ }
+
+ @mixin massive(){
+   font-size: 60px;
+ }
+
+ @mixin largy(){
+   font-size: 48px;
+ }
+
+ @mixin middy(){
+   font-size: 32px;
+ }
+
+ @mixin biggy(){
+   font-size: 18px;
+ }
+
+ @mixin central(){
+   text-align: center;
+ }
+
+ .logo {
+   @include pet-class;
+   @include central;
+   @include massive;
+   font-weight: 200;
+
+ }
+
+ .banner {
+   @include base;
+   @include pet-class;
+   @include central;
+   @include massive;
+ }
+
+ .big-header{
+   @include base;
+   @include pet-class;
+   @include central;
+   @include largy;
+   background-color: transparent;
+ }
+
+ .mid-header{
+   @include base;
+   @include pet-class;
+   @include central;
+   @include middy;
+ }
+
+ .staple {
+   @include base;
+   @include pet-class;
+   @include largy;
+ }
+
+ .important {
+   @include base;
+   @include central
+ }
+
+ .coolness{
+   @include base;
+   @include pet-class;
+   @include biggy;
+   @include central;
+ }
+
+ .normal {
+   @include base;
+ }
+
+ .column {
+   float: left;
+   padding: 10px;
+ }
+
+ .column.side {
+   width: 25vw;
+ }
+
+ .column.middle {
+   width: 50vw;
+ }
+
+ table{
+   border-collapse: collapse;
+   width: 100%;
+   th, td{
+     padding: 10px;
+     text-align: left;
+   }
+ }
+
+ table.cool{
+   @include biggy;
+   tr:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+     border-bottom: 1px solid white;
+   }
+ }
+ table.cool-smol{
+   th:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+     border-bottom: 1px solid white;
+   }
+   th {
+     font-weight: 200;
+   }
+ }
+
+ table.cool-tiny{
+   tr:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+     border-bottom: 1px solid white;
+   }
+ }
+
+ table.cool-button{
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+
+   }
+ }
+
+ table.feed{
+   @include biggy;
+   tr:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+   text-align: center;
+ }
+ }
+
+ table.all-feed{
+   tr:hover {background-color: $pet-color;}
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+   text-align: center;
+ }
+ }
+
+ table.center{
+   @include biggy;
+   margin-left: auto;
+   margin-right: auto;
+   th, td, tr{
+     border-bottom: 1px solid white;
+   }
+ }
+
+
+
+ .card {
+   margin: auto;
+   width: 50%;
+   border: 1px sold black;
+ }
+
+ .card-apps {
+   margin: auto;
+   width: 200%;
+   border: 1px solid black;
+ }
+
+ .custom-card {
+   margin: auto;
+   width: 100%;
+   border: 1px sold black;
+   opacity: 10%;
+   background-color: rgba(245, 245, 245, 0.1);
+   color: white;
+ }
+ .custom-card-text {
+   color: white;
+ }
+
+ /* LANDING PAGE */
+ body {
+ 	background: #445;
+ 	color: #FFF;
+   opacity: 0%;
+   height: 100%;
+ }
+
+ #main {
+  margin-top: -45px;
+ 	background: linear-gradient(to bottom, rgba(0,0,0,0.66) 90%, transparent), url(https://preview.ibb.co/fqO4Le/earl.jpg);
+ 	background-size: cover, cover;
+  background-position: center, center;
+ 	height: 100vh;
+ 	width: 100%;
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ }
+
+ h1 {
+ 	font-size: 2rem;
+ 	display: inline-block;
+ 	padding: 1rem;
+ 	font-weight: 400;
+ 	position: relative;
+ 	opacity: 1;
+ 	transform: scale(1);
+ 	transition: transform 0.5s ease, opacity 1s ease;
+ }
+
+ .is-loading h1 {
+ 	transform: scale(0.9);
+ 	opacity: 0;
+ }
+
+ h1:before,
+ h1:after {
+ 	height: 2px;
+ 	width: 100%;
+ 	content: "";
+ 	background: white;
+ 	display: block;
+ 	position: absolute;
+ 	transition: width 0.4s ease;
+ 	transition-delay: 0.8s;
+ }
+
+ h1:before {
+ 	top: 0;
+ 	left: 0;
+ }
+
+ h1:after {
+ 	bottom: 0;
+ 	right: 0;
+ }
+
+ .is-loading h1:before,
+ .is-loading h1:after {
+ 	width: 0;
+ }
+
+
+.btn-primary {
+   &.btn-inverse {
+     @include button-variant($btn-primary-bg, $btn-primary-color, $btn-primary-bg);
+     &:hover {
+       @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+     }
+   }
+   &.btn-transparent {
+     @include button-variant($btn-primary-bg, transparent, $btn-primary-bg);
+     &:hover {
+       @include button-variant($btn-primary-bg, darken($btn-primary-bg, 25%), $btn-primary-bg);
+     }
+   }
+ }
+
+ .btn-success {
+   &.btn-inverse {
+     @include button-variant($btn-success-bg, $btn-success-color, $btn-success-bg);
+     &:hover {
+       @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+     }
+   }
+   &.btn-transparent {
+     @include button-variant($btn-success-bg, transparent, $btn-success-bg);
+     &:hover {
+       @include button-variant($btn-success-bg, darken($btn-success-bg, 25%), $btn-success-bg);
+     }
+   }
+ }
+
+ .btn-info {
+   &.btn-inverse {
+     @include button-variant($btn-info-bg, $btn-info-color, $btn-info-bg);
+     &:hover {
+       @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+     }
+   }
+   &.btn-transparent {
+     @include button-variant($btn-info-bg, transparent, $btn-info-bg);
+     &:hover {
+       @include button-variant($btn-info-bg, darken($btn-info-bg, 25%), $btn-info-bg);
+     }
+   }
+ }
+
+
+ /* float btns */
+
+ div.login-buttons {
+   width: 420px;
+ }
+
+ .login-buttons input {
+   display: inline;
+   float: left;
+   margin: 0 5px;
+   width: 200px;
+   height: 40px;
+ }
+
+
+.resize-svg {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+.logo-font {
+  font-family: "Lobster", cursive;
+  font-size: 40px;
+  color: white;
+}
+
+.logo-font-form {
+  font-family: "Lobster", cursive;
+  font-size: 40px;
+  color: blue;
+}
+.link-size {
+  font-size: 20px;
+}
+
+.label-font {
+  color: white;
+}
+
+.custom-group-width {
+  align: center;
+  width: 80%;
+}
+
+.custom-cont {
+  width: 60%;
+}
+
+.custom-navbar-bg {
+  background-color: 428bca;
+}
+.scroll-div{
+  max-height: 80vh;
+  overflow: scroll;
+
+}

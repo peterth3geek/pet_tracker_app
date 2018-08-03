@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     @appointment = Appointment.new(appointment_params)
     if @appointment.save
       redirect_to @appointment
@@ -19,6 +19,26 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = find_appointment
+  end
+
+  def edit
+    @appointment = find_appointment
+  end
+
+  def update
+    @appointment = find_appointment
+    if @appointment.update(appointment_params)
+      redirect_to @appointment
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @appointment = find_appointment
+    @appointment.destroy
+
+    redirect_to owner_path(current_user)
   end
 
   private

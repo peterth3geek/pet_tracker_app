@@ -216,6 +216,7 @@
 </table>
 <br>
 <h3 class="coolness">Conditions</h3>
+<%= link_to "New condition", new_condition_path, method: :get, active: true, class: "btn btn-outline-info" %>
 <table class="cool-tiny">
   <% @pet.conditions.each do |condition| %>
   <% if valid_caretaker? %>

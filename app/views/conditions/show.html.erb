@@ -1,5 +1,16 @@
-<h2><%= @condition.title %></h2>
-<p><%= link_to @condition.pet.name, @condition.pet %></p>
-<p><%= @condition.notes %></p>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <%= link_to @condition.pet.name, pet_path(@condition.pet), class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title logo-font-form text-primary"><%= @condition.title %></h5>
+    <p class="card-text"><%= @condition.notes %></p>
+    <%= link_to "Edit Condition", edit_condition_path(@condition), class: "btn btn-outline-warning", method: :get %>
 
-<p><%= link_to "See Appointments", appointments_path %></p>
+    <%= link_to "Delete Condition", @condition, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete this condition?"} %>
+  </div>
+</div>

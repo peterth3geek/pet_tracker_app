@@ -1,0 +1,21 @@
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <%= link_to @appointment.pet.name, pet_path(@appointment.pet), class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <%= form_for @appointment do |f| %>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %><br>
+      <%= f.label :notes %><br>
+      <%= f.text_area :notes %><br>
+      <%= f.label :time %><br>
+      <%= f.datetime_select :time, ampm: true,  start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %><br>
+      <br>
+      <%= f.submit "Update Appointment", class: "btn btn-outline-success" %>
+    <% end %>
+
+</div>

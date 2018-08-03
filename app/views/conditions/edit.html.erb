@@ -2,12 +2,9 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <%= link_to "Go Back", owner_path(current_user), class: "nav-link" %>
+        <%= link_to @condition.pet.name, pet_path(@condition.pet), class: "nav-link" %>
       </li>
     </ul>
-    <div class="card-header logo-font-form text-primary">
-    New Condition
-  </div>
   </div>
   <div class="card-body">
     <%= form_for @condition do |f| %>
@@ -15,9 +12,8 @@
       <%= f.text_field :title %><br>
       <%= f.label :notes %><br>
       <%= f.text_area :notes %><br>
-      <%= f.label :pet_id %>
-      <%= f.collection_select :pet_id, current_user.pets, :id, :name %><br>
-      <%= f.submit "Create New Condition", class: "btn btn-primary" %>      <br>
+      <br>
+      <%= f.submit "Update Condition", class: "btn btn-outline-success" %>
     <% end %>
 
 </div>

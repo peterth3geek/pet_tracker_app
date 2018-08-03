@@ -10,6 +10,8 @@
     <h5 class="card-title logo-font-form text-primary"><%= @appointment.title %></h5>
     <p class="card-text"><%= @appointment.notes %></p>
     <p class="card-text">When: <%= @appointment.date.strftime("%m/%d/%Y at %I:%M %p") %></p>
+    <%= link_to "Edit Appointment", edit_appointment_path(@appointment), class: "btn btn-outline-warning", method: :get %>
+
     <%= link_to "Delete Appointment", @appointment, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete this appointment?"} %>
   </div>
 </div>
