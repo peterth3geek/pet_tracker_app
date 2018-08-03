@@ -367,6 +367,9 @@
   height: 30px;
 }
 
+.larger-form-button{
+  width: 15vw;
+}
 
 
 .logo-font {
@@ -412,7 +415,7 @@
   display: grid;
   justify-content: left;
   grid-template-columns: repeat(3, 2fr);
-  grid-gap: 20px 20px;
+  grid-gap: 10px 10px;
 }
 
 // .custom-cont {
