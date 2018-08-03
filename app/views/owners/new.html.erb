@@ -4,6 +4,10 @@
   Sign Up
 </div>
   <div class="card-body">
+
+    <% @owner.errors.full_messages.each do |error| %>
+    <div class="alert-danger"><%= error %></div>
+    <% end %>
 <%= form_for @owner, url: signup_path do |f| %>
   <div class="form-group">
   <%= f.label :name %>

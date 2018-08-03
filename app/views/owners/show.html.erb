@@ -7,7 +7,7 @@
 </td></tr>
 <tr><td>
 <p class="important"><% if @owner.image.attachment %>
-  <%= image_tag @owner.image, style: 'height:auto;width:100%;' %>
+  <%= image_tag @owner.image, style: 'height:auto;width:100%;', class: "jumbo-shadow"%>
   <% else %>
   There's no image.
   <% end %>
@@ -35,7 +35,7 @@
 
 
 <div class="column middle">
-  <div class="jumbotron">
+  <div class="jumbotron jumbo-shadow">
   <h3 class="mid-header">Recent Activity</h3>
 <table class="feed">
   <tr>
@@ -61,7 +61,7 @@
 <% end %>
 <% elsif @owner.appointments.last.logged_time > Time.zone.now.strftime("%I:%M %P on %m/%d/%Y")%>
 <% elsif @owner.next_appointment != nil %>
-<div class="jumbotron">
+<div class="jumbotron jumbo-shadow">
 <div class="mid-header">
 <h3>Upcoming Appointments:</h3>
 </div>
@@ -83,7 +83,7 @@
 <% else %>
 
 <!--  Testing code -->
-<div class="jumbotron">
+<div class="jumbotron jumbo-shadow">
 <table class="cool">
 <tr><p class="big-header"><%= link_to "My Pets!", pets_path %> </p></tr>
 <% @owner.pets.each do |pet| %>
