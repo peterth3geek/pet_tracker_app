@@ -1,6 +1,28 @@
-<h1>Owners</h1>
-<ul>
-  <% @owners.each do |owner| %>
-    <li><%= link_to owner.name, owner %> | </li>
+<div class="container custom-cont">
+  <!-- <div class="row"> -->
+
+<div class="custom-group-width ">
+<% @owners.each do |owner| %>
+  <div class="card custom-card-width">
+
+    <% if owner.image.attachment %>
+    <%= image_tag owner.image, class: "card-img-top rounded", style: "width:100%;height:auto;" %>
+    <% else %>
+    There is no image!
+    <% end %>
+
+    <div class="card-body">
+      <h5 class="card-title logo-font-form text-primary"><%= link_to owner.name, owner %></h5>
+      <p class="card-text"><br>
+    <br>
+      <%= owner.bio %>
+    </p>
+
+
+    </div>
+  </div>
   <% end %>
-</ul>
+<!-- </div> -->
+
+</div>
+</div>
