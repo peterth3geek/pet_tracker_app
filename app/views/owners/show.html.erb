@@ -80,7 +80,7 @@
 <% end %>
 <br>
 <br>
-<% if @owner.pets.empty? %>
+<% if @owner.pets.empty? && @owner == current_user%>
 <%= link_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %>
 <% else %>
 
