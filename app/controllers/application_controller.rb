@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :valid_owner?
   helper_method :valid_sitter?
   helper_method :valid_caretaker?
+  protect_from_forgery prepend: true
 
   $OWNER = "Owner"
   $CARETAKER = "Caretaker"

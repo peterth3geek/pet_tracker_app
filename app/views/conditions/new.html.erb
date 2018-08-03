@@ -1,8 +1,11 @@
-<div class="card text-center">
+<div class="card text-center shows">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <%= link_to "Go Back", owner_path(current_user), class: "nav-link" %>
+        <%= link_to 'Go Back', request.headers['HTTP_REFERER'] %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#{current_user.name}", owner_path(current_user), class: "nav-link" %>
       </li>
     </ul>
     <div class="card-header logo-font-form text-primary">
