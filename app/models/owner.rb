@@ -14,8 +14,22 @@ class Owner < ApplicationRecord
   # before_validation default_stats
 
   validates :name, uniqueness: true
+  validates :name, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+  validate :check_empty_space
+
+
+  # /^[a-z0-9][-a-z0-9]{1,19}$/i
 
   has_one_attached :image
+
+
+def check_empty_space
+  if self.name.match(/\s+/)
+    errors.add(:name, "Must contain no spaces!")
+  end
+end
+
+
 
 def live_feed
   self.pets.map {|pet| pet.most_recent}
