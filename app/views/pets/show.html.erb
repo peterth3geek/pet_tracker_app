@@ -244,6 +244,9 @@
 
 <h2 class="mid-header">All Activity</h2>
 <table class="all-feed">
+  <% if @pet.sort_my_log.empty? %>
+  <tr><td>No Activity Yet!</td></tr>
+  <% else %>
 <% @pet.sort_my_log.each do |activity|%>
 <% if valid_sitter? %>
 <% if activity.class == Waste %>
@@ -252,12 +255,14 @@
   <tr onclick="location.href='<%= play_path(activity) %>'">
 <% elsif activity.class == Food%>
   <tr onclick="location.href='<%= food_path(activity) %>'">
-<% elsif activity.class == Appointment%>
+<% elsif valid_caretaker? && activity.class == Appointment%>
   <tr onclick="location.href='<%= appointment_path(activity) %>'">
 <% end %>
+  <% else %>
+  <tr>
 <% end %>
-
   <td><%= activity.pet.name %></td> <td><%=@pet.recent_activity(activity)%></td><td><%= activity.logged_time %></td></tr>
+<% end %>
 <% end %>
 </table>
 

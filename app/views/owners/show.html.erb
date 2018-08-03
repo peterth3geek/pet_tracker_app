@@ -9,14 +9,14 @@
 <p class="important"><% if @owner.image.attachment %>
   <%= image_tag @owner.image, style: 'height:auto;width:100%;', class: "jumbo-shadow"%>
   <% else %>
-  There's no image.
+  <%= link_to "Add an image!", edit_owner_path(@owner), method: :get, class: "btn btn-outline-success" %>
   <% end %>
 </p>
 </td></tr>
 <tr><td class="important">
 <% if @owner.bio == nil %>
 <% if @owner.id == session[:owner_id] %>
-<%= link_to '<button type="button" class="btn btn-outline-success">Add a Bio!</button>'.html_safe, edit_owner_path(@owner) %>
+<%= link_to "Add a Bio!", edit_owner_path(@owner), method: :get, class: "btn btn-outline-success" %>
 <% end %>
 <% else %>
 <p><%= @owner.bio %></p>
@@ -40,7 +40,7 @@
 <table class="feed">
   <tr>
   <% if @owner.display_most_recent == ["No Activity Yet!"] || @owner.display_most_recent == "No Activity Yet!"%>
-  <p>"No Activity Yet!"</p>
+  <p>No Activity Yet!</p>
   <% else %>
   <% if @owner.id == session[:owner_id] %>
   <td onclick="location.href='<%= pet_path(@owner.living_method.pet) %>'">
@@ -55,10 +55,10 @@
 </div>
 
 <br>
-<% if @owner.appointments.empty? %>
-<% if @owner.id == session[:owner_id] %>
-<%= link_to "Schedule Appointments", new_appointment_path %>
-<% end %>
+<% if @owner.appointments.empty? && @owner.pets.empty?%>
+<% elsif @owner.appointments.empty? %>
+  <% if @owner.id == session[:owner_id] %>
+<%= link_to "Schedule Appointments", new_appointment_path, method: :get, class: "btn btn-outline-warning" %><% end %>
 <% elsif @owner.appointments.last.logged_time > Time.zone.now.strftime("%I:%M %P on %m/%d/%Y")%>
 <% elsif @owner.next_appointment != nil %>
 <div class="jumbotron jumbo-shadow">
@@ -79,7 +79,7 @@
 <br>
 <br>
 <% if @owner.pets.empty? %>
-<%= link_to '<button type="button">Add A Pet!</button>'.html_safe, new_pet_path %>
+<%= link_to "Add a Pet!", new_pet_path, method: :get, class: "btn btn-outline-primary" %>
 <% else %>
 
 <!--  Testing code -->
@@ -101,6 +101,11 @@
   <h3 class="mid-header"> All Activity</h3>
   <div class="scroll-div">
   <table class="all-feed">
+    <% if @owner.sorted_all_feed.empty? %>
+    <tr>
+      <td>No Activity Yet!</td>
+    </tr>
+    <% else %>
   <% @owner.sorted_all_feed.each do |activity| %>
   <% if @owner.id == session[:owner_id] %>
   <% if activity.class == Waste %>
@@ -111,12 +116,13 @@
     <tr onclick="location.href='<%= food_path(activity) %>'">
   <% elsif activity.class == Appointment%>
     <tr onclick="location.href='<%= appointment_path(activity) %>'">
+    <% else %>
+    <tr>
   <% end %>
-  <% else %>
-  <tr>
   <% end %>
     <td><%= activity.pet.name %></td> <td><%=activity.pet.recent_activity(activity)%></td><td><%= activity.logged_time %></td>
   </tr>
+  <% end %>
   <% end %>
 </table>
 </div>
