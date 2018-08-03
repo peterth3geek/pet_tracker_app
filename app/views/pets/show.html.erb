@@ -52,48 +52,42 @@
   </div>
   <% end %>
 <div class="jumbotron jumbo-shadow">
-  <%= form_for @food do |f| %>
-  <table class="cool-smol">
     <h2 class="big-header">Log Activity</h2>
-    <tr>
-        <% if @pet.foods.empty? || @pet.foods.last.time == nil%>
-        <th>
-        Log feeding times here!
-        <% else %>
-        <% if valid_caretaker? %>
-        <th onclick="location.href='<%= food_path(@pet.foods.last) %>'">Last fed:
-          <% else %>
-          <th>Last fed:
+    <br>
+      <div class="pet-grid">
+            <% if @pet.foods.empty? || @pet.foods.last.time == nil%>
+            Log feeding times here!
+            <% else %>
+            <% if valid_caretaker? %>
+            <%= link_to "Last Meal: #{@pet.foods.last.logged_time}", food_path(@pet.foods.last) %>
+              <% else %>
+              Last fed:
+            <%= @pet.foods.last.logged_time%>
             <% end %>
-        <%=@pet.foods.last.logged_time%>
+            <% end %>
+          <% if valid_sitter? %>
+          <%= form_for @food do |f| %>
+          <%= f.hidden_field :time, value: Time.zone.now%>
+          <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
+          <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
+          <%= f.submit "Give Meal!",class: "btn btn-outline-primary", turbolinks: false %>
+          <% end %>
+          <%= link_to "New Meal Event", new_food_path, class: "btn btn-outline-primary", method: :get %>
         <% end %>
-      </th>
-      <% if valid_sitter? %>
-      <%= f.hidden_field :time, value: Time.zone.now%>
-      <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
-      <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-      <td class="center-it">
-      <%= f.submit "Give Meal!",class: "btn btn-outline-primary", turbolinks: false %>
-      <% end %>
-    </td>
-    <td><%= link_to "New Meal Event", new_food_path, class: "btn btn-outline-primary", method: :get %>
-</td>
-    <% end %>
+      </div>
 
-    </tr>
-    <tr>
+<div class="pet-grid">
       <% if @pet.plays.empty? %>
-      <th>
       Log  playtimes here!
       <% else %>
       <% if valid_sitter? %>
-      <th onclick="location.href='<%= play_path(@pet.plays.last) %>'">Last played with:
+<%= link_to "Last Activity #{@pet.plays.last.logged_time}", play_path(@pet.plays.last)%>
       <% else %>
-      <th>Last played with:
+        Last played with:    <%= @pet.plays.last.logged_time%>
+
         <% end %>
-    <%= @pet.plays.last.logged_time%>
     <% end %>
-  </th>
+
   <% if valid_sitter? %>
     <%= form_for @play do |f| %>
 
@@ -103,121 +97,107 @@
     <td class="center-it">
     <%= f.submit "Log Activity!", class: "btn btn-outline-success" %>
     <% end %>
-  </td>
-  <td><%= link_to "New Activity", new_play_path, class: "btn btn-outline-success", method: :get %>
-</td>
+<%= link_to "New Activity", new_play_path, class: "btn btn-outline-success", method: :get %>
   <% end %>
-  </tr>
-  <tr>
+</div>
+
+<div class="pet-grid">
   <% if @pet.species.downcase == "dog" %>
     <% if @pet.wastes.empty? %>
-    <th>
     Log walks here!
     <% else %>
     <% if valid_sitter? %>
-    <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Walk:
+    <%= link_to "Last cleaning: #{@pet.wastes.last.logged_time}", waste_path(@pet.wastes.last) %>
       <% else %>
-      <th>
+      Last Walk: <%= @pet.wastes.last.logged_time %>
         <% end %>
-       <%= @pet.wastes.last.logged_time%>
   <% end %>
-</th>
 <% if valid_sitter? %>
 
   <%= form_for @waste do |f| %>
   <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-<td class="center-it">
   <%= f.submit "Walk!", class: "btn btn-outline-info" %>
   <% end %>
-</td>
-<td><%= link_to "New Walk", new_waste_path, class: "btn btn-outline-info", method: :get %>
-</td>
+<%= link_to "New Walk", new_waste_path, class: "btn btn-outline-info", method: :get %>
 <% end %>
+
   <% elsif @pet.species.downcase == "cat" %>
   <% if @pet.wastes.empty? %>
-  <th>
   Log scoops here!
   <% else %>
   <% if valid_sitter? %>
-  <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Scoop:
+  <%= link_to "Last Scoop: #{@pet.wastes.last.logged_time}", waste_path(@pet.wastes.last) %>
     <% else %>
-    <th>Last Scoop:
+    Last Scoop:   <%=@pet.wastes.last.logged_time%>
       <% end %>
-   <%=@pet.wastes.last.logged_time%>
   <% end %>
-</th>
 <% if valid_sitter? %>
   <%= form_for @waste do |f| %>
   <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-<td class="center-it">
   <%= f.submit "Scoop!", class: "btn btn-outline-info"  %>
   <% end %>
-</td>
-<td><%= link_to "New Scoop", new_waste_path, class: "btn btn-outline-info", method: :get %>
-</td>
+<%= link_to "New Scoop", new_waste_path, class: "btn btn-outline-info", method: :get %>
 <% end %>
   <% else %>
 
   <% if @pet.wastes.empty? %>
-  <th>
   Log Cleanings here!
   <% else %>
   <% if valid_sitter? %>
-  <th onclick="location.href='<%= waste_path(@pet.wastes.last) %>'">Last Cage Cleaning:
+  <%= link_to "Last cleaning: #{@pet.wastes.last.logged_time}", waste_path(@pet.wastes.last) %>
     <% else %>
-    <th>Last cage cleaning:
+    Last cage cleaning:   <%= @pet.wastes.last.logged_time %>
+
       <% end %>
-  <%= @pet.wastes.last.logged_time %>
   <% end %>
-</th>
 <% if valid_sitter? %>
   <%= form_for @waste do |f| %>
   <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-<td class="center-it">
   <%= f.submit "Clean!", class: "btn btn-outline-info" %>
   <% end %>
   <% end %>
-</td>
-<td><%= link_to "New Cleaning", new_waste_path, class: "btn btn-outline-info", method: :get %>
+<%= link_to "New Cleaning", new_waste_path, class: "btn btn-outline-info", method: :get %>
 
 <% end %>
-</tr>
+</div>
+<hr>
 
-<tr>
+<h2 class="mid-header">Appointments</h2>
+
+<%= form_for @appointment do |f| %>
+<table class="cool-smol">
+  <tr>
   <% if @pet.appointments.empty? %>
-  <th>
-  Log Appointments here!
+  <td>Log Appointments!</td>
   <% else %>
   <% if valid_sitter? %>
-  <th onclick="location.href='<%= appointment_path(@pet.appointments.last) %>'">
-    Last Appointment:
+  <td><%= link_to "Last appointment: #{@pet.appointments.last.logged_time}", appointment_path(@pet.appointments.last) %>
     <% else %>
-    <th>Last Appointment:
+    <td>Last Appointment:<%= @pet.appointments.last.logged_time %></td>
       <% end %>
-  <%= @pet.appointments.last.logged_time %>
   <% end %>
-</th>
 <% if valid_caretaker? %>
 <td>
-  <%= form_for @appointment do |f| %>
   <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
   <%= f.hidden_field :title, value: "Checkup" %>
   <%= f.hidden_field :notes, value: "Take #{@pet.name} in for a Checkup" %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-</td><td>
-  <%= f.submit "Create Appointment!", class: "btn btn-outline-secondary" %>
-  <% end %>
 </td>
+<td>
+    <%= f.submit "Create Appointment!", class: "btn btn-outline-secondary" %>
+</td>
+  <% end %>
 <% end %>
 </tr>
 </table>
+
 <br>
 
 <h3 class="coolness">Conditions</h3>
