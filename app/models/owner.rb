@@ -16,8 +16,8 @@ class Owner < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, format: { with: /\A[a-zA-Z0-9]+\Z/ }
   validate :check_empty_space
-  validates :name, length: { in: 3..12 }
-  validates :password, length: { in: 6..20 }
+  validates :name, length: { in: 3..18 }
+  validates :password_digest, presence: true
 
 
   # /^[a-z0-9][-a-z0-9]{1,19}$/i

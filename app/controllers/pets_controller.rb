@@ -30,7 +30,8 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     if @pet.save
       @pet.image.attach(pet_params[:image])
-      Relationship.create(pet_id: @pet.id, owner_id: pet_rel_params[:owner_id], title: "Owner" )
+      binding.pry
+      Relationship.create(pet_id: @pet.id, owner_id: pet_rel_params[:owner_id], title: $OWNER )
 
       redirect_to @pet
     else
@@ -55,7 +56,7 @@ class PetsController < ApplicationController
   def destroy
     @pet = Pet.find(params[:id])
     @pet.delete
-    redirect_to pets_path 
+    redirect_to pets_path
   end
 
   private

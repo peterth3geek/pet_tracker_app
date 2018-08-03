@@ -8,13 +8,13 @@ class RelationshipsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @relationship = Relationship.new(relationship_params)
+    @owner = Owner.find_by(user_name)
+    @relationship = Relationship.new(pet_id: relationship_params[:pet_id], title: relationship_params[:title], owner_id: @owner.id)
     if @relationship.valid?
       @relationship.save
       redirect_to owner_path(@relationship.owner)
     else
-      render :edit
+      render :new
     end
   end
 
@@ -40,11 +40,19 @@ class RelationshipsController < ApplicationController
 
   private
   def relationship_params
-    params.require(:relationship).permit(:pet_id, :owner_id, :title)
+    params.require(:relationship).permit(:pet_id, :owner_id, :title, owners: [:name])
   end
 
   def update_relationship_params
     params.require(:relationship).permit(:title)
+  end
+
+  def user_nested_params
+    params.require(:relationship).permit(owners: :name)
+  end
+
+  def user_name
+    user_nested_params.require(:owners).permit(:name)
   end
 
 end
