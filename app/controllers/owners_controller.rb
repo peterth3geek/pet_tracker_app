@@ -39,6 +39,13 @@ class OwnersController < ApplicationController
     end
   end
 
+  def destroy
+    @owner = find_owner
+    session.delete :owner_id
+    @owner.destroy
+    redirect_to root_path
+  end
+
   private
   def find_owner
     Owner.find(params[:id])

@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       redirect_to owner_path(@owner)
     else
       redirect_to root_path
+      flash.now[:danger] = "Invalid Username/Password Combination"
     end
   end
 
