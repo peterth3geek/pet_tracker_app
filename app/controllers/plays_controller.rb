@@ -33,6 +33,13 @@ class PlaysController < ApplicationController
     redirect_to @play
   end
 
+  def destroy
+    @play = Play.find(params[:id])
+    @play.destroy
+
+    redirect_to current_user
+  end
+
   private
   def play_params
     params.require(:play).permit(:pet_id, :owner_id, :notes, :time)

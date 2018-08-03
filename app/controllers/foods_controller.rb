@@ -28,6 +28,13 @@ class FoodsController < ApplicationController
     redirect_to @food
   end
 
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+
+    redirect_to current_user
+  end
+
   private
   def food_params
     params.require(:food).permit(:pet_id, :owner_id, :notes, :time)

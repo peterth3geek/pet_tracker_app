@@ -27,6 +27,13 @@ class WastesController < ApplicationController
     redirect_to @waste
   end
 
+  def destroy
+    @waste = Waste.find(params[:id])
+    @waste.destroy
+
+    redirect_to current_user
+  end
+
 
   private
   def waste_params
