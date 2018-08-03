@@ -1,3 +1,22 @@
-<h2><%= link_to @food.owner.name, owner_path(@food.owner) %> fed <%= link_to @food.pet.name, pet_path(@food.pet) %> at <%= @food.logged_time %></h2>
-<p><%= link_to "Edit Notes", edit_food_path(@food) %></p>
-<p><%= @food.notes %></p>
+<div class="card text-center shows">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <%= link_to 'Go Back', request.headers['HTTP_REFERER'] %>
+      </li>
+      <li class="nav-item">
+        <%= link_to @food.pet.name, pet_path(@food.pet), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to @food.owner.name, owner_path(@food.owner), class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title logo-font-form text-primary"><%= @food.pet.name %>'s meal with <%= @food.owner.name %> at <%= @food.logged_time %></h5>
+    <p class="card-text"><%= @food.notes %></p>
+    <%= link_to "Edit Meal", edit_food_path(@food), class: "btn btn-outline-warning", method: :get %>
+
+    <%= link_to "Delete Meal", @food, class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure you want to delete this Waste?"} %>
+  </div>
+</div>

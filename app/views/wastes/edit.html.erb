@@ -13,7 +13,7 @@
       </li>
     </ul>
     <div class="card-header logo-font-form text-primary">
-    Cleaning at <%= @waste.logged_time %> with <%= @waste.owner.name %>
+    <%= @waste.owner.name %> cleaned <%= @waste.pet.name %> <%= @waste.logged_time %>
   </div>
   </div>
   <div class="card-body">
@@ -22,7 +22,7 @@
       <%= f.text_area :notes %><br>
       <%= f.hidden_field :pet_id, value: @waste.pet_id %>
       <%= f.hidden_field :owner_id, value: current_user.id %>
-      <%= f.submit "Edit Activity", class: "btn btn-primary" %>      <br>
+      <%= f.submit "Edit Waste", class: "btn btn-primary" %>      <br>
     <% end %>
 
 </div>

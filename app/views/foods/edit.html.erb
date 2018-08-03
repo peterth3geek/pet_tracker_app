@@ -12,8 +12,7 @@
       </li>
     </ul>
     <div class="card-header logo-font-form text-primary">
-    Meal at <%= @food.logged_time %> with <%= @food.owner.name %>
-  </div>
+<%= @food.pet.name %>'s meal with <%= @food.owner.name %> at <%= @food.logged_time %>  </div>
   </div>
   <div class="card-body">
     <%= form_for @food do |f| %>
