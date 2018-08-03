@@ -6,7 +6,7 @@
   <div class="card-body">
 <ul>
   <% @owner.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+  <div class="alert-danger"><%= error %></div>
   <% end %>
 </ul>
 
