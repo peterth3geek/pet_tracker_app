@@ -9,6 +9,10 @@ class PlaysController < ApplicationController
     @play = Play.find(params[:id])
   end
 
+  def new
+    @play = Play.new
+  end
+
   def create
     # binding.pry
     @play = Play.new(play_params)

@@ -70,16 +70,16 @@
         <% end %>
       </th>
       <% if valid_sitter? %>
-    <td>
 
-      <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
+      <%= f.hidden_field :time, value: Time.zone.now%>
       <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
       <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-    </td>
-      <td>
+      <td class="center-it">
       <%= f.submit "Give Meal!",class: "btn btn-outline-primary", turbolinks: false %>
       <% end %>
     </td>
+    <td><%= link_to "New Meal Event", new_food_path, class: "btn btn-outline-primary", method: :get %>
+</td>
     <% end %>
 
     </tr>
@@ -97,15 +97,16 @@
     <% end %>
   </th>
   <% if valid_sitter? %>
-  <td>
     <%= form_for @play do |f| %>
-    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
+    <%= f.hidden_field :time, value: Time.zone.now %>
     <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
     <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-  </td><td>
+    <td class="center-it">
     <%= f.submit "Log Activity!", class: "btn btn-outline-success" %>
     <% end %>
   </td>
+  <td><%= link_to "New Activity", new_play_path, class: "btn btn-outline-success", method: :get %>
+</td>
   <% end %>
   </tr>
   <tr>
@@ -123,14 +124,16 @@
   <% end %>
 </th>
 <% if valid_sitter? %>
-<td>
+
   <%= form_for @waste do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
+  <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-</td><td>
+<td class="center-it">
   <%= f.submit "Walk!", class: "btn btn-outline-info" %>
   <% end %>
+</td>
+<td><%= link_to "New Walk", new_waste_path, class: "btn btn-outline-info", method: :get %>
 </td>
 <% end %>
   <% elsif @pet.species.downcase == "cat" %>
@@ -147,14 +150,15 @@
   <% end %>
 </th>
 <% if valid_sitter? %>
-<td>
   <%= form_for @waste do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
+  <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-</td><td>
+<td class="center-it">
   <%= f.submit "Scoop!", class: "btn btn-outline-info"  %>
   <% end %>
+</td>
+<td><%= link_to "New Scoop", new_waste_path, class: "btn btn-outline-info", method: :get %>
 </td>
 <% end %>
   <% else %>
@@ -172,16 +176,17 @@
   <% end %>
 </th>
 <% if valid_sitter? %>
-<td>
   <%= form_for @waste do |f| %>
-  <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: (Time.zone.now.year - 1), order: [:month, :day, :year], use_short_month: true %>
+  <%= f.hidden_field :time, value: Time.zone.now %>
   <%= f.hidden_field :pet_id, value: "#{@pet.id}" %>
   <%= f.hidden_field :owner_id, value: "#{session[:owner_id]}" %>
-</td><td>
-  <%= f.submit "Cleaning!", class: "btn btn-outline-info" %>
+<td class="center-it">
+  <%= f.submit "Clean!", class: "btn btn-outline-info" %>
   <% end %>
   <% end %>
 </td>
+<td><%= link_to "New Cleaning", new_waste_path, class: "btn btn-outline-info", method: :get %>
+
 <% end %>
 </tr>
 
@@ -215,8 +220,11 @@
 </tr>
 </table>
 <br>
+
 <h3 class="coolness">Conditions</h3>
+<% if valid_owner? %>
 <%= link_to "New condition", new_condition_path, method: :get, active: true, class: "btn btn-outline-info" %>
+<% end %>
 <table class="cool-tiny">
   <% @pet.conditions.each do |condition| %>
   <% if valid_caretaker? %>

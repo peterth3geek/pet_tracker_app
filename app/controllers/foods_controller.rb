@@ -5,6 +5,10 @@ class FoodsController < ApplicationController
     get_food
   end
 
+  def new
+    @food = Food.new
+  end
+
   def create
     # binding.pry
     @food = Food.new(food_params)

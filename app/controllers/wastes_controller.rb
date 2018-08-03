@@ -4,6 +4,10 @@ class WastesController < ApplicationController
     get_waste
   end
 
+  def new
+    @waste = Waste.new
+  end
+
   def create
     # binding.pry
     @waste = Waste.new(waste_params)

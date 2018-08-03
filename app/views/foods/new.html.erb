@@ -7,22 +7,19 @@
       </li>
     </ul>
     <div class="card-header logo-font-form text-primary">
-    New Appointment
+    Log Meal
   </div>
   </div>
   <div class="card-body">
-    <h1>Create New Appointment</h1>
-    <%= form_for @appointment do |f| %>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %><br>
+    <%= form_for @food do |f| %>
+    <%= f.label :time %><br>
+    <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %><br/>
       <%= f.label :notes %><br>
       <%= f.text_area :notes %><br>
-      <%= f.label :time %><br>
-      <%= f.datetime_select :time, ampm: true, default: Time.zone.now, start_year: Time.zone.now.year, order: [:month, :day, :year] %><br/>
       <%= f.label "Pet" %>
-      <%= f.collection_select :pet_id, Pet.all, :id, :name %><br/>
+      <%= f.collection_select :pet_id, current_user.pets, :id, :name %><br/>
       <%= f.hidden_field :owner_id, value: current_user.id %>
-      <%= f.submit "Create New Appointment", class: "btn btn-primary" %>      <br>
+      <%= f.submit "Create New Meal", class: "btn btn-primary" %>      <br>
     <% end %>
 
 </div>

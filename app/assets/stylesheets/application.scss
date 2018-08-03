@@ -149,6 +149,10 @@
    }
  }
 
+ td.center-it{
+   text-align: center;
+ }
+
  table.cool-tiny{
    tr:hover {background-color: $pet-color;}
    margin-left: auto;
@@ -199,6 +203,9 @@
  .card {
    margin: auto;
    border: 1px sold black;
+ }
+ .card.shows{
+   width: 60vw;
  }
 
  .card-apps {
@@ -404,7 +411,7 @@
 }
 
 .jumbo-shadow {
-  box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.15);
+  box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.15);
 }
 
 .my-pets {
