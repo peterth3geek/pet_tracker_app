@@ -8,7 +8,7 @@
 <tr><td>
 <p class="important"><% if @owner.image.attachment %>
   <%= image_tag @owner.image, style: 'height:auto;width:100%;', class: "jumbo-shadow"%>
-  <% else %>
+  <% elsif @owner.id == session[:owner_id] %>
   <%= link_to "Add an image!", edit_owner_path(@owner), method: :get, class: "btn btn-outline-success" %>
   <% end %>
 </p>
