@@ -20,6 +20,10 @@
     <div class="container">
       <%= image_tag "animal-paw-print.svg", class: "resize-svg"%>
       <%= link_to "PeTrackr", root_path, class: "logo-font" %>
+      <% if logged_in? %>
+      <%= link_to "signed in as " + current_user.name, current_user, class: "nav-link link-size logo-font" %>
+      <% else %>
+      <% end %>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,9 +33,10 @@
           <%= link_to "Home", current_user, class: "nav-link link-size" %>
         </li>
         <% if logged_in? %>
-
         <li class="nav-item">
           <%= link_to "My Pets", pets_path, class: "nav-link link-size" %>
+        </li>
+        <li>
         </li>
         <li class="nav-item">
             <%= link_to "Logout", logout_path, method: :delete, class: 'nav-link link-size' %>
