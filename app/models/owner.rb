@@ -46,15 +46,15 @@ def sorted_all_feed
 end
 
 def valid_owner
-  @role == OWNER
+  @role == $OWNER
 end
 
 def valid_caretaker
-  @role == CARETAKER || @role == OWNER
+  @role == $CARETAKER || @role == $OWNER
 end
 
 def valid_sitter
-  @role == SITTER || @role == CARETAKER || @role == OWNER
+  @role == $SITTER || @role == $CARETAKER || @role == $OWNER
 end
 
 end

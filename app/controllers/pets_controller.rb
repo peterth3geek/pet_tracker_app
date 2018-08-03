@@ -30,7 +30,6 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     if @pet.save
       @pet.image.attach(pet_params[:image])
-      binding.pry
       Relationship.create(pet_id: @pet.id, owner_id: pet_rel_params[:owner_id], title: $OWNER )
 
       redirect_to @pet

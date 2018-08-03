@@ -13,7 +13,6 @@ class ConditionsController < ApplicationController
   end
 
   def create
-    binding.pry
     @condition = Condition.create(condition_params)
     redirect_to condition_path(@condition)
   end
