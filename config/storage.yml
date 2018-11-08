@@ -2,9 +2,9 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
-local:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+# local:
+#   service: Disk
+#   root: <%= Rails.root.join("storage") %>
 
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
@@ -23,13 +23,13 @@ local:
 #   bucket: your_own_bucket
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
-# microsoft:
-# azure_storage: credentials.yml.enc36358
-#
-#   service: AzureStorage
-#   storage_account_name: petrakr
-#   storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
-#   container: petrakr1
+microsoft:
+azure_storage: credentials.yml.enc36358
+
+  service: AzureStorage
+  storage_account_name: petrakr
+  storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
+  container: petrakr1
 
 # mirror:
 #   service: Mirror
