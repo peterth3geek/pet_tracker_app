@@ -17,6 +17,9 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+
+
 $(document).ready(function() {
 	setTimeout(function() {
 		$("#main").removeClass("is-loading");
